@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-11T19:26:41Z",
+  "updatedAt": "2026-04-11T19:53:22Z",
   "etfs": [
     {
       "symbol": "SPY",
@@ -16,7 +16,12 @@
       "volatility": 16.7529,
       "sharpe": 1.5083,
       "maxDrawdown": -18.7552,
-      "rsScore": 47.5
+      "rsScore": 47.5,
+      "aum": 651588.3,
+      "flow1m": 14590.0,
+      "flow3m": -12197.8,
+      "flow6m": 11603.6,
+      "flowYTD": -1773.4
     },
     {
       "symbol": "QQQ",
@@ -33,7 +38,12 @@
       "volatility": 21.2956,
       "sharpe": 1.4917,
       "maxDrawdown": -22.7683,
-      "rsScore": 55.0
+      "rsScore": 55.0,
+      "aum": 372507.3,
+      "flow1m": 8877.1,
+      "flow3m": -9016.5,
+      "flow6m": 1172.8,
+      "flowYTD": -779.0
     },
     {
       "symbol": "IWM",
@@ -50,7 +60,12 @@
       "volatility": 21.8788,
       "sharpe": 1.7936,
       "maxDrawdown": -27.5031,
-      "rsScore": 65.0
+      "rsScore": 65.0,
+      "aum": 71915.6,
+      "flow1m": 3943.7,
+      "flow3m": 421.7,
+      "flow6m": 4795.2,
+      "flowYTD": 3567.4
     },
     {
       "symbol": "DIA",
@@ -67,7 +82,12 @@
       "volatility": 14.9277,
       "sharpe": 1.3304,
       "maxDrawdown": -15.9543,
-      "rsScore": 40.0
+      "rsScore": 40.0,
+      "aum": 41759.7,
+      "flow1m": 1113.4,
+      "flow3m": -1212.2,
+      "flow6m": 1675.4,
+      "flowYTD": -223.5
     },
     {
       "symbol": "VTI",
@@ -84,7 +104,12 @@
       "volatility": 16.8477,
       "sharpe": 1.5593,
       "maxDrawdown": -19.3036,
-      "rsScore": 50.0
+      "rsScore": 50.0,
+      "aum": 1991753.9,
+      "flow1m": 48473.3,
+      "flow3m": -37336.2,
+      "flow6m": 37778.5,
+      "flowYTD": -1246.3
     },
     {
       "symbol": "XLK",
@@ -101,7 +126,12 @@
       "volatility": 25.7412,
       "sharpe": 1.5819,
       "maxDrawdown": -25.6563,
-      "rsScore": 57.5
+      "rsScore": 57.5,
+      "aum": 84198.4,
+      "flow1m": 2923.0,
+      "flow3m": -1976.9,
+      "flow6m": -1228.2,
+      "flowYTD": -886.0
     },
     {
       "symbol": "XLF",
@@ -118,7 +148,12 @@
       "volatility": 17.6771,
       "sharpe": 0.5179,
       "maxDrawdown": -15.5403,
-      "rsScore": 5.0
+      "rsScore": 5.0,
+      "aum": 47790.9,
+      "flow1m": 2061.2,
+      "flow3m": -4400.7,
+      "flow6m": -1969.8,
+      "flowYTD": -3651.5
     },
     {
       "symbol": "XLE",
@@ -135,7 +170,12 @@
       "volatility": 22.4541,
       "sharpe": 1.9021,
       "maxDrawdown": -20.1373,
-      "rsScore": 92.5
+      "rsScore": 92.5,
+      "aum": 43603.1,
+      "flow1m": -150.6,
+      "flow3m": 8096.5,
+      "flow6m": 10501.3,
+      "flowYTD": 8872.5
     },
     {
       "symbol": "XLV",
@@ -152,7 +192,12 @@
       "volatility": 15.0554,
       "sharpe": 0.535,
       "maxDrawdown": -17.109,
-      "rsScore": 17.5
+      "rsScore": 17.5,
+      "aum": 38603.9,
+      "flow1m": -585.8,
+      "flow3m": -2451.8,
+      "flow6m": 1131.9,
+      "flowYTD": -1982.0
     },
     {
       "symbol": "XLI",
@@ -169,7 +214,12 @@
       "volatility": 17.4932,
       "sharpe": 2.1228,
       "maxDrawdown": -18.4907,
-      "rsScore": 70.0
+      "rsScore": 70.0,
+      "aum": 28334.8,
+      "flow1m": 1113.9,
+      "flow3m": 1659.2,
+      "flow6m": 3168.7,
+      "flowYTD": 2309.9
     },
     {
       "symbol": "XLY",
@@ -186,7 +236,12 @@
       "volatility": 22.1975,
       "sharpe": 0.7378,
       "maxDrawdown": -26.0074,
-      "rsScore": 20.0
+      "rsScore": 20.0,
+      "aum": 21445.8,
+      "flow1m": 302.7,
+      "flow3m": -2141.1,
+      "flow6m": -807.8,
+      "flowYTD": -992.2
     },
     {
       "symbol": "XLP",
@@ -203,7 +258,12 @@
       "volatility": 12.7977,
       "sharpe": 0.5259,
       "maxDrawdown": -9.6878,
-      "rsScore": 35.0
+      "rsScore": 35.0,
+      "aum": 15480.6,
+      "flow1m": -264.7,
+      "flow3m": 669.7,
+      "flow6m": 1012.0,
+      "flowYTD": 961.3
     },
     {
       "symbol": "XLU",
@@ -220,7 +280,12 @@
       "volatility": 15.7061,
       "sharpe": 1.7284,
       "maxDrawdown": -10.5045,
-      "rsScore": 60.0
+      "rsScore": 60.0,
+      "aum": 24418.9,
+      "flow1m": 407.1,
+      "flow3m": 2467.4,
+      "flow6m": 1208.4,
+      "flowYTD": 2121.5
     },
     {
       "symbol": "XLB",
@@ -237,7 +302,12 @@
       "volatility": 18.0483,
       "sharpe": 1.7286,
       "maxDrawdown": -23.1658,
-      "rsScore": 72.5
+      "rsScore": 72.5,
+      "aum": 6540.1,
+      "flow1m": 314.7,
+      "flow3m": 492.6,
+      "flow6m": 1013.0,
+      "flowYTD": 760.8
     },
     {
       "symbol": "XLRE",
@@ -254,7 +324,12 @@
       "volatility": 16.092,
       "sharpe": 0.8081,
       "maxDrawdown": -16.5701,
-      "rsScore": 42.5
+      "rsScore": 42.5,
+      "aum": 7306.2,
+      "flow1m": 164.0,
+      "flow3m": 442.0,
+      "flow6m": 410.6,
+      "flowYTD": 462.3
     },
     {
       "symbol": "EWU",
@@ -271,7 +346,12 @@
       "volatility": 14.9302,
       "sharpe": 2.7615,
       "maxDrawdown": -12.6349,
-      "rsScore": 75.0
+      "rsScore": 75.0,
+      "aum": 3324.2,
+      "flow1m": 124.8,
+      "flow3m": 200.8,
+      "flow6m": 446.1,
+      "flowYTD": 223.8
     },
     {
       "symbol": "EWG",
@@ -288,7 +368,12 @@
       "volatility": 18.5469,
       "sharpe": 0.9038,
       "maxDrawdown": -15.4922,
-      "rsScore": 30.0
+      "rsScore": 30.0,
+      "aum": 1397.1,
+      "flow1m": 42.3,
+      "flow3m": -60.8,
+      "flow6m": -16.5,
+      "flowYTD": -32.2
     },
     {
       "symbol": "EWQ",
@@ -305,7 +390,12 @@
       "volatility": 18.2076,
       "sharpe": 1.2123,
       "maxDrawdown": -15.1594,
-      "rsScore": 52.5
+      "rsScore": 52.5,
+      "aum": 406.7,
+      "flow1m": 20.1,
+      "flow3m": -0.3,
+      "flow6m": 19.3,
+      "flowYTD": 4.8
     },
     {
       "symbol": "EWI",
@@ -322,7 +412,12 @@
       "volatility": 19.2999,
       "sharpe": 2.4262,
       "maxDrawdown": -16.7993,
-      "rsScore": 77.5
+      "rsScore": 77.5,
+      "aum": 627.1,
+      "flow1m": 50.7,
+      "flow3m": 24.6,
+      "flow6m": 74.6,
+      "flowYTD": 23.2
     },
     {
       "symbol": "EWP",
@@ -339,7 +434,12 @@
       "volatility": 19.7552,
       "sharpe": 2.9848,
       "maxDrawdown": -12.1882,
-      "rsScore": 87.5
+      "rsScore": 87.5,
+      "aum": 1814.1,
+      "flow1m": 140.9,
+      "flow3m": 92.9,
+      "flow6m": 298.0,
+      "flowYTD": 86.5
     },
     {
       "symbol": "VGK",
@@ -356,7 +456,12 @@
       "volatility": 16.1758,
       "sharpe": 2.0572,
       "maxDrawdown": -14.3066,
-      "rsScore": 62.5
+      "rsScore": 62.5,
+      "aum": 36605.8,
+      "flow1m": 1744.1,
+      "flow3m": 710.3,
+      "flow6m": 3397.2,
+      "flowYTD": 1216.7
     },
     {
       "symbol": "EWJ",
@@ -373,7 +478,12 @@
       "volatility": 20.4652,
       "sharpe": 1.9024,
       "maxDrawdown": -14.6762,
-      "rsScore": 67.5
+      "rsScore": 67.5,
+      "aum": 18328.6,
+      "flow1m": 819.4,
+      "flow3m": 732.1,
+      "flow6m": 1980.2,
+      "flowYTD": 1414.2
     },
     {
       "symbol": "EWZ",
@@ -390,7 +500,12 @@
       "volatility": 24.727,
       "sharpe": 3.0877,
       "maxDrawdown": -25.5549,
-      "rsScore": 95.0
+      "rsScore": 95.0,
+      "aum": 9721.0,
+      "flow1m": 1225.4,
+      "flow3m": 1945.1,
+      "flow6m": 2978.7,
+      "flowYTD": 2147.4
     },
     {
       "symbol": "EEM",
@@ -407,7 +522,12 @@
       "volatility": 18.7755,
       "sharpe": 2.6937,
       "maxDrawdown": -17.2924,
-      "rsScore": 80.0
+      "rsScore": 80.0,
+      "aum": 24905.6,
+      "flow1m": 1484.6,
+      "flow3m": 1406.5,
+      "flow6m": 3039.5,
+      "flowYTD": 1776.6
     },
     {
       "symbol": "FXI",
@@ -424,7 +544,12 @@
       "volatility": 28.877,
       "sharpe": 0.5991,
       "maxDrawdown": -23.2425,
-      "rsScore": 7.5
+      "rsScore": 7.5,
+      "aum": 5918.7,
+      "flow1m": 14.7,
+      "flow3m": -506.2,
+      "flow6m": -624.5,
+      "flowYTD": -582.9
     },
     {
       "symbol": "TLT",
@@ -436,12 +561,17 @@
       "return1m": -0.1546,
       "return3m": -0.5373,
       "return6m": -0.8412,
-      "return12m": 1.7381,
+      "return12m": 1.738,
       "returnYTD": 0.4913,
       "volatility": 12.5297,
       "sharpe": 0.1387,
-      "maxDrawdown": -14.7871,
-      "rsScore": 2.5
+      "maxDrawdown": -14.7872,
+      "rsScore": 2.5,
+      "aum": 42618.6,
+      "flow1m": -66.0,
+      "flow3m": -230.2,
+      "flow6m": -361.6,
+      "flowYTD": 208.4
     },
     {
       "symbol": "IEF",
@@ -458,7 +588,12 @@
       "volatility": 5.8536,
       "sharpe": 0.7838,
       "maxDrawdown": -6.8939,
-      "rsScore": 12.5
+      "rsScore": 12.5,
+      "aum": 48925.8,
+      "flow1m": -52.5,
+      "flow3m": -62.5,
+      "flow6m": 388.0,
+      "flowYTD": 49.4
     },
     {
       "symbol": "SHY",
@@ -475,7 +610,12 @@
       "volatility": 1.5088,
       "sharpe": 2.3511,
       "maxDrawdown": -0.9685,
-      "rsScore": 15.0
+      "rsScore": 15.0,
+      "aum": 24748.2,
+      "flow1m": 47.1,
+      "flow3m": 89.3,
+      "flow6m": 328.2,
+      "flowYTD": 80.3
     },
     {
       "symbol": "LQD",
@@ -491,8 +631,13 @@
       "returnYTD": 0.2483,
       "volatility": 6.6454,
       "sharpe": 1.0072,
-      "maxDrawdown": -6.2586,
-      "rsScore": 25.0
+      "maxDrawdown": -6.2587,
+      "rsScore": 25.0,
+      "aum": 28883.7,
+      "flow1m": 284.2,
+      "flow3m": -54.0,
+      "flow6m": 166.6,
+      "flowYTD": 71.5
     },
     {
       "symbol": "HYG",
@@ -509,7 +654,12 @@
       "volatility": 4.9434,
       "sharpe": 1.8126,
       "maxDrawdown": -4.5607,
-      "rsScore": 27.5
+      "rsScore": 27.5,
+      "aum": 16378.8,
+      "flow1m": 203.4,
+      "flow3m": 28.5,
+      "flow6m": 378.5,
+      "flowYTD": 95.1
     },
     {
       "symbol": "EMB",
@@ -526,7 +676,12 @@
       "volatility": 6.796,
       "sharpe": 1.95,
       "maxDrawdown": -5.1506,
-      "rsScore": 37.5
+      "rsScore": 37.5,
+      "aum": 14120.4,
+      "flow1m": 165.5,
+      "flow3m": 61.0,
+      "flow6m": 419.7,
+      "flowYTD": 69.8
     },
     {
       "symbol": "GLD",
@@ -543,7 +698,12 @@
       "volatility": 22.529,
       "sharpe": 2.3603,
       "maxDrawdown": -19.2095,
-      "rsScore": 82.5
+      "rsScore": 82.5,
+      "aum": 155110.8,
+      "flow1m": -10556.5,
+      "flow3m": 8040.7,
+      "flow6m": 25442.0,
+      "flowYTD": 13785.5
     },
     {
       "symbol": "SLV",
@@ -560,7 +720,12 @@
       "volatility": 45.7815,
       "sharpe": 3.1931,
       "maxDrawdown": -42.4527,
-      "rsScore": 97.5
+      "rsScore": 97.5,
+      "aum": 35677.3,
+      "flow1m": -3821.8,
+      "flow3m": -1704.3,
+      "flow6m": 12586.2,
+      "flowYTD": 1719.8
     },
     {
       "symbol": "USO",
@@ -577,7 +742,12 @@
       "volatility": 35.4232,
       "sharpe": 2.3911,
       "maxDrawdown": -26.0493,
-      "rsScore": 100.0
+      "rsScore": 100.0,
+      "aum": 2644.5,
+      "flow1m": 136.2,
+      "flow3m": 1144.9,
+      "flow6m": 1108.3,
+      "flowYTD": 1183.5
     },
     {
       "symbol": "DBA",
@@ -594,7 +764,12 @@
       "volatility": 14.8323,
       "sharpe": 0.4767,
       "maxDrawdown": -12.3587,
-      "rsScore": 32.5
+      "rsScore": 32.5,
+      "aum": 1182.6,
+      "flow1m": 6.2,
+      "flow3m": 48.8,
+      "flow6m": 58.1,
+      "flowYTD": 58.5
     },
     {
       "symbol": "PDBC",
@@ -611,7 +786,12 @@
       "volatility": 16.6695,
       "sharpe": 2.3216,
       "maxDrawdown": -12.5984,
-      "rsScore": 90.0
+      "rsScore": 90.0,
+      "aum": 6465.7,
+      "flow1m": -91.4,
+      "flow3m": 1299.2,
+      "flow6m": 1536.3,
+      "flowYTD": 1405.9
     },
     {
       "symbol": "VNQ",
@@ -628,7 +808,12 @@
       "volatility": 15.959,
       "sharpe": 0.8988,
       "maxDrawdown": -17.4548,
-      "rsScore": 45.0
+      "rsScore": 45.0,
+      "aum": 64663.9,
+      "flow1m": 1351.4,
+      "flow3m": 3099.2,
+      "flow6m": 3792.2,
+      "flowYTD": 3752.9
     },
     {
       "symbol": "IAU",
@@ -645,7 +830,12 @@
       "volatility": 22.4003,
       "sharpe": 2.3843,
       "maxDrawdown": -19.1789,
-      "rsScore": 85.0
+      "rsScore": 85.0,
+      "aum": 70519.4,
+      "flow1m": -4795.3,
+      "flow3m": 3677.1,
+      "flow6m": 11598.4,
+      "flowYTD": 6299.2
     },
     {
       "symbol": "UUP",
@@ -662,7 +852,12 @@
       "volatility": 6.9711,
       "sharpe": 0.0442,
       "maxDrawdown": -10.0503,
-      "rsScore": 10.0
+      "rsScore": 10.0,
+      "aum": 576.2,
+      "flow1m": -5.0,
+      "flow3m": 2.3,
+      "flow6m": 7.0,
+      "flowYTD": 6.9
     },
     {
       "symbol": "TIP",
@@ -679,7 +874,12 @@
       "volatility": 4.2074,
       "sharpe": 1.0756,
       "maxDrawdown": -3.6654,
-      "rsScore": 22.5
+      "rsScore": 22.5,
+      "aum": 13898.0,
+      "flow1m": 11.3,
+      "flow3m": 105.2,
+      "flow6m": 115.5,
+      "flowYTD": 145.2
     }
   ],
   "intermarket": {
@@ -1530,7 +1730,7 @@
       },
       "UUP": {
         "c30": -0.5417,
-        "c90": -0.3066
+        "c90": -0.3067
       },
       "EEM": {
         "c30": 0.6237,
@@ -1864,5 +2064,6 @@
     "UUP",
     "EEM",
     "HYG"
-  ]
+  ],
+  "flowNote": "Flows are implied: \u0394AUM adjusted for price return. Values in USD millions. Positive = inflows, Negative = outflows."
 }
