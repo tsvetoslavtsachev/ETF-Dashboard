@@ -1,0 +1,7 @@
+{
+  "updatedAt": "2026-04-11T19:00:00Z",
+  "etfs": [
+    {"symbol":"SPY","name":"SPDR S&P 500","category":"US Equity","region":"US","price":null,"volume":null,"return1m":null,"return3m":null,"return6m":null,"return12m":null,"returnYTD":null,"volatility":null,"sharpe":null,"maxDrawdown":null,"rsScore":null}
+  ],
+  "_note": "This is a placeholder. Run fetch_data.py or wait for the GitHub Actions workflow to populate real data."
+}
