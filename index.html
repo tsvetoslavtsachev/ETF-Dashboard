@@ -16,7 +16,8 @@
 
   /* NAV */
   nav { display:flex; align-items:center; gap:4px; padding:10px 20px; background:var(--surface);
-        border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; flex-wrap:wrap; }
+        border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  #sticky-header { position:sticky; top:0; z-index:100; background:var(--surface); }
   nav .logo { font-weight:700; font-size:15px; color:var(--accent); margin-right:12px; white-space:nowrap; }
   nav button { background:none; border:none; color:var(--muted); padding:6px 12px; border-radius:6px;
                cursor:pointer; font-size:12px; font-weight:500; transition:all .15s; }
@@ -37,7 +38,8 @@
 
   /* PERIOD SELECTOR (heatmap) */
   #period-bar { display:flex; gap:4px; padding:8px 20px; background:var(--bg);
-                border-bottom:1px solid var(--border); align-items:center; flex-wrap:wrap; }
+                border-bottom:1px solid var(--border); align-items:center; flex-wrap:wrap;
+                position:sticky; z-index:90; }
   #period-bar .label { font-size:11px; color:var(--muted); margin-right:6px; }
   .period-btn { background:none; border:1px solid var(--border); color:var(--muted);
                 padding:3px 10px; border-radius:5px; cursor:pointer; font-size:11px; font-weight:600; transition:all .15s; }
@@ -68,7 +70,7 @@
   /* RS TABLE */
   .table-wrap { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; }
-  thead { position:sticky; top:96px; z-index:10; }
+  thead { position:sticky; top:var(--thead-top, 0px); z-index:10; }
   th { background:var(--surface); padding:7px 9px; text-align:right; color:var(--muted);
        font-size:11px; font-weight:600; cursor:pointer; user-select:none;
        border-bottom:1px solid var(--border); white-space:nowrap; }
@@ -138,6 +140,7 @@
 </head>
 <body>
 
+<div id="sticky-header">
 <!-- NAV -->
 <nav>
   <span class="logo">ETF Dashboard</span>
@@ -149,7 +152,6 @@
   <input id="search-box" type="text" placeholder="Search ticker / name…" oninput="applyFilters()"/>
   <span id="last-update"></span>
 </nav>
-
 <!-- CATEGORY FILTER BAR -->
 <div id="filter-bar">
   <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
@@ -161,6 +163,7 @@
   <button class="filter-btn" onclick="setFilter('Real Estate',this)">Real Estate</button>
   <button class="filter-btn" onclick="setFilter('Currency',this)">Currency</button>
 </div>
+</div><!-- end #sticky-header -->
 
 <!-- HEATMAP SCREEN -->
 <div id="screen-heatmap" class="screen active">
@@ -294,6 +297,7 @@ async function loadData() {
     applyFilters();
     renderIntermarket();
     renderFlows(filteredData());
+    requestAnimationFrame(updateStickyOffsets);
   } catch(e) {
     document.getElementById('heatmap-grid').innerHTML =
       '<div class="loading" style="color:var(--red)">⚠ Could not load data/etfs.json.<br>Run fetch_data.py to generate it.</div>';
@@ -325,6 +329,18 @@ function applyFilters() {
   renderFlows(data);
 }
 
+// ── Sticky offset calculator ─────────────────────────────────────────────────
+function updateStickyOffsets() {
+  const stickyH = document.getElementById('sticky-header').offsetHeight;
+  // period-bar is inside heatmap screen — only visible when heatmap active
+  const periodBar = document.getElementById('period-bar');
+  const periodH   = (periodBar && periodBar.offsetParent !== null) ? periodBar.offsetHeight : 0;
+  const theadTop  = stickyH + periodH;
+  document.documentElement.style.setProperty('--thead-top', theadTop + 'px');
+  // give period-bar its correct sticky top
+  if (periodBar) periodBar.style.top = stickyH + 'px';
+}
+
 // ── Screens ───────────────────────────────────────────────────────────────────
 function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -333,6 +349,8 @@ function showScreen(name) {
   const btn = document.getElementById('btn-' + name);
   if (btn) btn.classList.add('active');
   if (name !== 'drill') previousScreen = name;
+  // recalc after screen switch (period-bar visibility may change)
+  requestAnimationFrame(updateStickyOffsets);
 }
 function goBack() { showScreen(previousScreen); }
 
@@ -694,6 +712,8 @@ function renderIntermarket() {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 loadData();
+window.addEventListener('resize', updateStickyOffsets);
+requestAnimationFrame(updateStickyOffsets);
 </script>
 </body>
 </html>
