@@ -1,7 +1,1868 @@
 {
-  "updatedAt": "2026-04-11T19:00:00Z",
+  "updatedAt": "2026-04-11T19:26:41Z",
   "etfs": [
-    {"symbol":"SPY","name":"SPDR S&P 500","category":"US Equity","region":"US","price":null,"volume":null,"return1m":null,"return3m":null,"return6m":null,"return12m":null,"returnYTD":null,"volatility":null,"sharpe":null,"maxDrawdown":null,"rsScore":null}
+    {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500",
+      "category": "US Equity",
+      "region": "US",
+      "price": 679.46,
+      "volume": 41916700,
+      "return1m": 2.2904,
+      "return3m": -1.8376,
+      "return6m": 1.8131,
+      "return12m": 25.2687,
+      "returnYTD": -0.2714,
+      "volatility": 16.7529,
+      "sharpe": 1.5083,
+      "maxDrawdown": -18.7552,
+      "rsScore": 47.5
+    },
+    {
+      "symbol": "QQQ",
+      "name": "Invesco Nasdaq 100",
+      "category": "US Equity",
+      "region": "US",
+      "price": 611.07,
+      "volume": 33831300,
+      "return1m": 2.4412,
+      "return3m": -2.3633,
+      "return6m": 0.3158,
+      "return12m": 31.7656,
+      "returnYTD": -0.2087,
+      "volatility": 21.2956,
+      "sharpe": 1.4917,
+      "maxDrawdown": -22.7683,
+      "rsScore": 55.0
+    },
+    {
+      "symbol": "IWM",
+      "name": "iShares Russell 2000",
+      "category": "US Equity",
+      "region": "US",
+      "price": 261.3,
+      "volume": 22329700,
+      "return1m": 5.802,
+      "return3m": 0.5898,
+      "return6m": 7.1442,
+      "return12m": 39.2429,
+      "returnYTD": 5.2194,
+      "volatility": 21.8788,
+      "sharpe": 1.7936,
+      "maxDrawdown": -27.5031,
+      "rsScore": 65.0
+    },
+    {
+      "symbol": "DIA",
+      "name": "SPDR Dow Jones",
+      "category": "US Equity",
+      "region": "US",
+      "price": 479.25,
+      "volume": 2628600,
+      "return1m": 2.7392,
+      "return3m": -2.8209,
+      "return6m": 4.1797,
+      "return12m": 19.8598,
+      "returnYTD": -0.5323,
+      "volatility": 14.9277,
+      "sharpe": 1.3304,
+      "maxDrawdown": -15.9543,
+      "rsScore": 40.0
+    },
+    {
+      "symbol": "VTI",
+      "name": "Vanguard Total Market",
+      "category": "US Equity",
+      "region": "US",
+      "price": 335.05,
+      "volume": 2576100,
+      "return1m": 2.4944,
+      "return3m": -1.84,
+      "return6m": 1.9334,
+      "return12m": 26.2703,
+      "returnYTD": -0.0625,
+      "volatility": 16.8477,
+      "sharpe": 1.5593,
+      "maxDrawdown": -19.3036,
+      "rsScore": 50.0
+    },
+    {
+      "symbol": "XLK",
+      "name": "Technology Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 142.62,
+      "volume": 9309000,
+      "return1m": 3.5964,
+      "return3m": -2.294,
+      "return6m": -1.4377,
+      "return12m": 40.7192,
+      "returnYTD": -1.0414,
+      "volatility": 25.7412,
+      "sharpe": 1.5819,
+      "maxDrawdown": -25.6563,
+      "rsScore": 57.5
+    },
+    {
+      "symbol": "XLF",
+      "name": "Financial Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 50.77,
+      "volume": 35400700,
+      "return1m": 4.5074,
+      "return3m": -8.4318,
+      "return6m": -3.9585,
+      "return12m": 9.1552,
+      "returnYTD": -7.0982,
+      "volatility": 17.6771,
+      "sharpe": 0.5179,
+      "maxDrawdown": -15.5403,
+      "rsScore": 5.0
+    },
+    {
+      "symbol": "XLE",
+      "name": "Energy Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 56.94,
+      "volume": 42534800,
+      "return1m": -0.3442,
+      "return3m": 22.8027,
+      "return6m": 31.7242,
+      "return12m": 42.7101,
+      "returnYTD": 25.5466,
+      "volatility": 22.4541,
+      "sharpe": 1.9021,
+      "maxDrawdown": -20.1373,
+      "rsScore": 92.5
+    },
+    {
+      "symbol": "XLV",
+      "name": "Health Care Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 147.31,
+      "volume": 6217800,
+      "return1m": -1.4947,
+      "return3m": -5.9719,
+      "return6m": 3.0206,
+      "return12m": 8.055,
+      "returnYTD": -4.8836,
+      "volatility": 15.0554,
+      "sharpe": 0.535,
+      "maxDrawdown": -17.109,
+      "rsScore": 17.5
+    },
+    {
+      "symbol": "XLI",
+      "name": "Industrial Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 171.52,
+      "volume": 5169700,
+      "return1m": 4.0922,
+      "return3m": 6.22,
+      "return6m": 12.5912,
+      "return12m": 37.1344,
+      "returnYTD": 8.8758,
+      "volatility": 17.4932,
+      "sharpe": 2.1228,
+      "maxDrawdown": -18.4907,
+      "rsScore": 70.0
+    },
+    {
+      "symbol": "XLY",
+      "name": "Consumer Discret Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 112.89,
+      "volume": 5606500,
+      "return1m": 1.4318,
+      "return3m": -9.0774,
+      "return6m": -3.6298,
+      "return12m": 16.3775,
+      "returnYTD": -4.4218,
+      "volatility": 22.1975,
+      "sharpe": 0.7378,
+      "maxDrawdown": -26.0074,
+      "rsScore": 20.0
+    },
+    {
+      "symbol": "XLP",
+      "name": "Consumer Staples Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 82.37,
+      "volume": 12091600,
+      "return1m": -1.6811,
+      "return3m": 4.5219,
+      "return6m": 6.9941,
+      "return12m": 6.7304,
+      "returnYTD": 6.6207,
+      "volatility": 12.7977,
+      "sharpe": 0.5259,
+      "maxDrawdown": -9.6878,
+      "rsScore": 35.0
+    },
+    {
+      "symbol": "XLU",
+      "name": "Utilities Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 46.96,
+      "volume": 15046200,
+      "return1m": 1.6953,
+      "return3m": 11.2405,
+      "return6m": 5.2061,
+      "return12m": 27.1457,
+      "returnYTD": 9.5144,
+      "volatility": 15.7061,
+      "sharpe": 1.7284,
+      "maxDrawdown": -10.5045,
+      "rsScore": 60.0
+    },
+    {
+      "symbol": "XLB",
+      "name": "Materials Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 51.96,
+      "volume": 6137300,
+      "return1m": 5.0545,
+      "return3m": 8.1456,
+      "return6m": 18.3275,
+      "return12m": 31.1985,
+      "returnYTD": 13.1636,
+      "volatility": 18.0483,
+      "sharpe": 1.7286,
+      "maxDrawdown": -23.1658,
+      "rsScore": 72.5
+    },
+    {
+      "symbol": "XLRE",
+      "name": "Real Estate Select",
+      "category": "Sector",
+      "region": "US",
+      "price": 42.82,
+      "volume": 4989700,
+      "return1m": 2.2967,
+      "return3m": 6.439,
+      "return6m": 5.9541,
+      "return12m": 13.0037,
+      "returnYTD": 6.7553,
+      "volatility": 16.092,
+      "sharpe": 0.8081,
+      "maxDrawdown": -16.5701,
+      "rsScore": 42.5
+    },
+    {
+      "symbol": "EWU",
+      "name": "iShares MSCI UK",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 47.67,
+      "volume": 860600,
+      "return1m": 3.9015,
+      "return3m": 6.43,
+      "return6m": 15.4997,
+      "return12m": 41.2294,
+      "returnYTD": 7.22,
+      "volatility": 14.9302,
+      "sharpe": 2.7615,
+      "maxDrawdown": -12.6349,
+      "rsScore": 75.0
+    },
+    {
+      "symbol": "EWG",
+      "name": "iShares MSCI Germany",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 41.6,
+      "volume": 1391200,
+      "return1m": 3.1234,
+      "return3m": -4.1695,
+      "return6m": -1.1642,
+      "return12m": 16.7636,
+      "returnYTD": -2.2556,
+      "volatility": 18.5469,
+      "sharpe": 0.9038,
+      "maxDrawdown": -15.4922,
+      "rsScore": 30.0
+    },
+    {
+      "symbol": "EWQ",
+      "name": "iShares MSCI France",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 45.85,
+      "volume": 148500,
+      "return1m": 5.2088,
+      "return3m": -0.0654,
+      "return6m": 4.9956,
+      "return12m": 22.073,
+      "returnYTD": 1.1918,
+      "volatility": 18.2076,
+      "sharpe": 1.2123,
+      "maxDrawdown": -15.1594,
+      "rsScore": 52.5
+    },
+    {
+      "symbol": "EWI",
+      "name": "iShares MSCI Italy",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 57.28,
+      "volume": 774100,
+      "return1m": 8.7939,
+      "return3m": 4.0887,
+      "return6m": 13.4941,
+      "return12m": 46.8249,
+      "returnYTD": 3.8434,
+      "volatility": 19.2999,
+      "sharpe": 2.4262,
+      "maxDrawdown": -16.7993,
+      "rsScore": 77.5
+    },
+    {
+      "symbol": "EWP",
+      "name": "iShares MSCI Spain",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 57.44,
+      "volume": 693000,
+      "return1m": 8.4183,
+      "return3m": 5.3945,
+      "return6m": 19.6588,
+      "return12m": 58.9663,
+      "returnYTD": 5.0091,
+      "volatility": 19.7552,
+      "sharpe": 2.9848,
+      "maxDrawdown": -12.1882,
+      "rsScore": 87.5
+    },
+    {
+      "symbol": "VGK",
+      "name": "Vanguard FTSE Europe",
+      "category": "Intl Equity",
+      "region": "Europe",
+      "price": 87.06,
+      "volume": 2305400,
+      "return1m": 5.0028,
+      "return3m": 1.9789,
+      "return6m": 10.2299,
+      "return12m": 33.2772,
+      "returnYTD": 3.4382,
+      "volatility": 16.1758,
+      "sharpe": 2.0572,
+      "maxDrawdown": -14.3066,
+      "rsScore": 62.5
+    },
+    {
+      "symbol": "EWJ",
+      "name": "iShares MSCI Japan",
+      "category": "Intl Equity",
+      "region": "Asia",
+      "price": 88.13,
+      "volume": 4469600,
+      "return1m": 4.6799,
+      "return3m": 4.1603,
+      "return6m": 12.1122,
+      "return12m": 38.9322,
+      "returnYTD": 8.361,
+      "volatility": 20.4652,
+      "sharpe": 1.9024,
+      "maxDrawdown": -14.6762,
+      "rsScore": 67.5
+    },
+    {
+      "symbol": "EWZ",
+      "name": "iShares MSCI Brazil",
+      "category": "Intl Equity",
+      "region": "EM",
+      "price": 41.33,
+      "volume": 42017200,
+      "return1m": 14.4242,
+      "return3m": 25.0151,
+      "return6m": 44.18,
+      "return12m": 76.3485,
+      "returnYTD": 28.354,
+      "volatility": 24.727,
+      "sharpe": 3.0877,
+      "maxDrawdown": -25.5549,
+      "rsScore": 95.0
+    },
+    {
+      "symbol": "EEM",
+      "name": "iShares MSCI EM",
+      "category": "Intl Equity",
+      "region": "EM",
+      "price": 60.56,
+      "volume": 20508400,
+      "return1m": 6.3389,
+      "return3m": 5.9853,
+      "return6m": 13.9007,
+      "return12m": 50.5747,
+      "returnYTD": 7.6814,
+      "volatility": 18.7755,
+      "sharpe": 2.6937,
+      "maxDrawdown": -17.2924,
+      "rsScore": 80.0
+    },
+    {
+      "symbol": "FXI",
+      "name": "iShares China Large-Cap",
+      "category": "Intl Equity",
+      "region": "Asia",
+      "price": 36.25,
+      "volume": 15708200,
+      "return1m": 0.2489,
+      "return3m": -7.878,
+      "return6m": -9.5446,
+      "return12m": 17.2998,
+      "returnYTD": -8.9653,
+      "volatility": 28.877,
+      "sharpe": 0.5991,
+      "maxDrawdown": -23.2425,
+      "rsScore": 7.5
+    },
+    {
+      "symbol": "TLT",
+      "name": "iShares 20+ Yr Treasury",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 86.49,
+      "volume": 13237300,
+      "return1m": -0.1546,
+      "return3m": -0.5373,
+      "return6m": -0.8412,
+      "return12m": 1.7381,
+      "returnYTD": 0.4913,
+      "volatility": 12.5297,
+      "sharpe": 0.1387,
+      "maxDrawdown": -14.7871,
+      "rsScore": 2.5
+    },
+    {
+      "symbol": "IEF",
+      "name": "iShares 7-10 Yr Treasury",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 95.27,
+      "volume": 4404800,
+      "return1m": -0.1071,
+      "return3m": -0.1276,
+      "return6m": 0.7993,
+      "return12m": 4.5881,
+      "returnYTD": 0.1011,
+      "volatility": 5.8536,
+      "sharpe": 0.7838,
+      "maxDrawdown": -6.8939,
+      "rsScore": 12.5
+    },
+    {
+      "symbol": "SHY",
+      "name": "iShares 1-3 Yr Treasury",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 82.41,
+      "volume": 5763500,
+      "return1m": 0.1906,
+      "return3m": 0.362,
+      "return6m": 1.3438,
+      "return12m": 3.5473,
+      "returnYTD": 0.3257,
+      "volatility": 1.5088,
+      "sharpe": 2.3511,
+      "maxDrawdown": -0.9685,
+      "rsScore": 15.0
+    },
+    {
+      "symbol": "LQD",
+      "name": "iShares IG Corp Bond",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 109.2,
+      "volume": 22857000,
+      "return1m": 0.9935,
+      "return3m": -0.1866,
+      "return6m": 0.58,
+      "return12m": 6.693,
+      "returnYTD": 0.2483,
+      "volatility": 6.6454,
+      "sharpe": 1.0072,
+      "maxDrawdown": -6.2586,
+      "rsScore": 25.0
+    },
+    {
+      "symbol": "HYG",
+      "name": "iShares High Yield Bond",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 79.96,
+      "volume": 33005600,
+      "return1m": 1.2575,
+      "return3m": 0.1741,
+      "return6m": 2.3657,
+      "return12m": 8.9602,
+      "returnYTD": 0.5839,
+      "volatility": 4.9434,
+      "sharpe": 1.8126,
+      "maxDrawdown": -4.5607,
+      "rsScore": 27.5
+    },
+    {
+      "symbol": "EMB",
+      "name": "iShares EM Bond",
+      "category": "Fixed Income",
+      "region": "EM",
+      "price": 95.5,
+      "volume": 7361300,
+      "return1m": 1.1861,
+      "return3m": 0.4339,
+      "return6m": 3.0632,
+      "return12m": 13.2525,
+      "returnYTD": 0.4964,
+      "volatility": 6.796,
+      "sharpe": 1.95,
+      "maxDrawdown": -5.1506,
+      "rsScore": 37.5
+    },
+    {
+      "symbol": "GLD",
+      "name": "SPDR Gold Shares",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 437.13,
+      "volume": 6175600,
+      "return1m": -6.3721,
+      "return3m": 5.4672,
+      "return6m": 19.6207,
+      "return12m": 53.1747,
+      "returnYTD": 9.7544,
+      "volatility": 22.529,
+      "sharpe": 2.3603,
+      "maxDrawdown": -19.2095,
+      "rsScore": 82.5
+    },
+    {
+      "symbol": "SLV",
+      "name": "iShares Silver Trust",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 69.08,
+      "volume": 20752000,
+      "return1m": -9.6757,
+      "return3m": -4.5593,
+      "return6m": 54.5068,
+      "return12m": 146.1868,
+      "returnYTD": 5.0646,
+      "volatility": 45.7815,
+      "sharpe": 3.1931,
+      "maxDrawdown": -42.4527,
+      "rsScore": 97.5
+    },
+    {
+      "symbol": "USO",
+      "name": "United States Oil Fund",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 124.82,
+      "volume": 16008700,
+      "return1m": 5.4312,
+      "return3m": 76.3493,
+      "return6m": 72.1418,
+      "return12m": 84.6996,
+      "returnYTD": 81.0035,
+      "volatility": 35.4232,
+      "sharpe": 2.3911,
+      "maxDrawdown": -26.0493,
+      "rsScore": 100.0
+    },
+    {
+      "symbol": "DBA",
+      "name": "Invesco DB Agriculture",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 26.89,
+      "volume": 561100,
+      "return1m": 0.5234,
+      "return3m": 4.3057,
+      "return6m": 5.1709,
+      "return12m": 7.0706,
+      "returnYTD": 5.2034,
+      "volatility": 14.8323,
+      "sharpe": 0.4767,
+      "maxDrawdown": -12.3587,
+      "rsScore": 32.5
+    },
+    {
+      "symbol": "PDBC",
+      "name": "Invesco Commodity",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 16.97,
+      "volume": 5885000,
+      "return1m": -1.3945,
+      "return3m": 25.1475,
+      "return6m": 31.1668,
+      "return12m": 38.7004,
+      "returnYTD": 27.7861,
+      "volatility": 16.6695,
+      "sharpe": 2.3216,
+      "maxDrawdown": -12.5984,
+      "rsScore": 90.0
+    },
+    {
+      "symbol": "VNQ",
+      "name": "Vanguard Real Estate",
+      "category": "Real Estate",
+      "region": "US",
+      "price": 92.98,
+      "volume": 2568500,
+      "return1m": 2.1345,
+      "return3m": 5.034,
+      "return6m": 6.2299,
+      "return12m": 14.3438,
+      "returnYTD": 6.1613,
+      "volatility": 15.959,
+      "sharpe": 0.8988,
+      "maxDrawdown": -17.4548,
+      "rsScore": 45.0
+    },
+    {
+      "symbol": "IAU",
+      "name": "iShares Gold Trust",
+      "category": "Commodity",
+      "region": "Global",
+      "price": 89.56,
+      "volume": 3466800,
+      "return1m": -6.367,
+      "return3m": 5.5012,
+      "return6m": 19.6846,
+      "return12m": 53.4087,
+      "returnYTD": 9.8087,
+      "volatility": 22.4003,
+      "sharpe": 2.3843,
+      "maxDrawdown": -19.1789,
+      "rsScore": 85.0
+    },
+    {
+      "symbol": "UUP",
+      "name": "Invesco DB US Dollar",
+      "category": "Currency",
+      "region": "Global",
+      "price": 27.44,
+      "volume": 4865800,
+      "return1m": -0.8671,
+      "return3m": 0.4025,
+      "return6m": 1.2385,
+      "return12m": 0.308,
+      "returnYTD": 1.2173,
+      "volatility": 6.9711,
+      "sharpe": 0.0442,
+      "maxDrawdown": -10.0503,
+      "rsScore": 10.0
+    },
+    {
+      "symbol": "TIP",
+      "name": "iShares TIPS Bond",
+      "category": "Fixed Income",
+      "region": "US",
+      "price": 111.02,
+      "volume": 2252200,
+      "return1m": 0.0811,
+      "return3m": 0.7624,
+      "return6m": 0.8379,
+      "return12m": 4.5256,
+      "returnYTD": 1.0559,
+      "volatility": 4.2074,
+      "sharpe": 1.0756,
+      "maxDrawdown": -3.6654,
+      "rsScore": 22.5
+    }
   ],
-  "_note": "This is a placeholder. Run fetch_data.py or wait for the GitHub Actions workflow to populate real data."
+  "intermarket": {
+    "SPY": {
+      "TLT": {
+        "c30": 0.417,
+        "c90": 0.2627
+      },
+      "GLD": {
+        "c30": 0.4258,
+        "c90": 0.2424
+      },
+      "USO": {
+        "c30": -0.6705,
+        "c90": -0.424
+      },
+      "UUP": {
+        "c30": -0.6301,
+        "c90": -0.3406
+      },
+      "EEM": {
+        "c30": 0.8507,
+        "c90": 0.7893
+      },
+      "HYG": {
+        "c30": 0.8781,
+        "c90": 0.7949
+      }
+    },
+    "QQQ": {
+      "SPY": {
+        "c30": 0.9875,
+        "c90": 0.9579
+      },
+      "TLT": {
+        "c30": 0.3902,
+        "c90": 0.232
+      },
+      "GLD": {
+        "c30": 0.4448,
+        "c90": 0.2615
+      },
+      "USO": {
+        "c30": -0.6545,
+        "c90": -0.3967
+      },
+      "UUP": {
+        "c30": -0.6233,
+        "c90": -0.3489
+      },
+      "EEM": {
+        "c30": 0.8469,
+        "c90": 0.7718
+      },
+      "HYG": {
+        "c30": 0.8688,
+        "c90": 0.7383
+      }
+    },
+    "IWM": {
+      "SPY": {
+        "c30": 0.9272,
+        "c90": 0.8467
+      },
+      "TLT": {
+        "c30": 0.3544,
+        "c90": 0.2337
+      },
+      "GLD": {
+        "c30": 0.3516,
+        "c90": 0.3042
+      },
+      "USO": {
+        "c30": -0.6687,
+        "c90": -0.4012
+      },
+      "UUP": {
+        "c30": -0.5727,
+        "c90": -0.3113
+      },
+      "EEM": {
+        "c30": 0.8166,
+        "c90": 0.7163
+      },
+      "HYG": {
+        "c30": 0.8698,
+        "c90": 0.7398
+      }
+    },
+    "DIA": {
+      "SPY": {
+        "c30": 0.9425,
+        "c90": 0.8858
+      },
+      "TLT": {
+        "c30": 0.3954,
+        "c90": 0.2516
+      },
+      "GLD": {
+        "c30": 0.3564,
+        "c90": 0.2063
+      },
+      "USO": {
+        "c30": -0.6716,
+        "c90": -0.4434
+      },
+      "UUP": {
+        "c30": -0.5849,
+        "c90": -0.253
+      },
+      "EEM": {
+        "c30": 0.8211,
+        "c90": 0.7051
+      },
+      "HYG": {
+        "c30": 0.8357,
+        "c90": 0.7249
+      }
+    },
+    "VTI": {
+      "SPY": {
+        "c30": 0.9985,
+        "c90": 0.9967
+      },
+      "TLT": {
+        "c30": 0.4221,
+        "c90": 0.269
+      },
+      "GLD": {
+        "c30": 0.4193,
+        "c90": 0.2585
+      },
+      "USO": {
+        "c30": -0.6761,
+        "c90": -0.4271
+      },
+      "UUP": {
+        "c30": -0.6307,
+        "c90": -0.3438
+      },
+      "EEM": {
+        "c30": 0.8582,
+        "c90": 0.7973
+      },
+      "HYG": {
+        "c30": 0.8889,
+        "c90": 0.8017
+      }
+    },
+    "XLK": {
+      "SPY": {
+        "c30": 0.9425,
+        "c90": 0.8993
+      },
+      "TLT": {
+        "c30": 0.3057,
+        "c90": 0.1537
+      },
+      "GLD": {
+        "c30": 0.3801,
+        "c90": 0.2427
+      },
+      "USO": {
+        "c30": -0.6198,
+        "c90": -0.3615
+      },
+      "UUP": {
+        "c30": -0.597,
+        "c90": -0.3225
+      },
+      "EEM": {
+        "c30": 0.7985,
+        "c90": 0.725
+      },
+      "HYG": {
+        "c30": 0.8337,
+        "c90": 0.6582
+      }
+    },
+    "XLF": {
+      "SPY": {
+        "c30": 0.7779,
+        "c90": 0.6849
+      },
+      "TLT": {
+        "c30": 0.2969,
+        "c90": 0.1112
+      },
+      "GLD": {
+        "c30": 0.0436,
+        "c90": 0.0173
+      },
+      "USO": {
+        "c30": -0.5422,
+        "c90": -0.288
+      },
+      "UUP": {
+        "c30": -0.4279,
+        "c90": -0.1273
+      },
+      "EEM": {
+        "c30": 0.5578,
+        "c90": 0.4105
+      },
+      "HYG": {
+        "c30": 0.665,
+        "c90": 0.5121
+      }
+    },
+    "XLE": {
+      "SPY": {
+        "c30": -0.4722,
+        "c90": -0.1635
+      },
+      "TLT": {
+        "c30": -0.1718,
+        "c90": -0.1104
+      },
+      "GLD": {
+        "c30": -0.2159,
+        "c90": 0.1576
+      },
+      "USO": {
+        "c30": 0.3631,
+        "c90": 0.4364
+      },
+      "UUP": {
+        "c30": 0.2964,
+        "c90": 0.077
+      },
+      "EEM": {
+        "c30": -0.3471,
+        "c90": -0.0798
+      },
+      "HYG": {
+        "c30": -0.3116,
+        "c90": -0.1171
+      }
+    },
+    "XLV": {
+      "SPY": {
+        "c30": 0.7292,
+        "c90": 0.5126
+      },
+      "TLT": {
+        "c30": 0.4817,
+        "c90": 0.3188
+      },
+      "GLD": {
+        "c30": 0.4146,
+        "c90": 0.1529
+      },
+      "USO": {
+        "c30": -0.5833,
+        "c90": -0.4116
+      },
+      "UUP": {
+        "c30": -0.5166,
+        "c90": -0.153
+      },
+      "EEM": {
+        "c30": 0.7055,
+        "c90": 0.4508
+      },
+      "HYG": {
+        "c30": 0.6563,
+        "c90": 0.5143
+      }
+    },
+    "XLI": {
+      "SPY": {
+        "c30": 0.9011,
+        "c90": 0.804
+      },
+      "TLT": {
+        "c30": 0.2595,
+        "c90": 0.2036
+      },
+      "GLD": {
+        "c30": 0.5187,
+        "c90": 0.278
+      },
+      "USO": {
+        "c30": -0.6358,
+        "c90": -0.389
+      },
+      "UUP": {
+        "c30": -0.5545,
+        "c90": -0.2557
+      },
+      "EEM": {
+        "c30": 0.8313,
+        "c90": 0.7203
+      },
+      "HYG": {
+        "c30": 0.7544,
+        "c90": 0.6697
+      }
+    },
+    "XLY": {
+      "SPY": {
+        "c30": 0.9001,
+        "c90": 0.8164
+      },
+      "TLT": {
+        "c30": 0.3817,
+        "c90": 0.2458
+      },
+      "GLD": {
+        "c30": 0.3342,
+        "c90": 0.1452
+      },
+      "USO": {
+        "c30": -0.6856,
+        "c90": -0.4186
+      },
+      "UUP": {
+        "c30": -0.6209,
+        "c90": -0.3116
+      },
+      "EEM": {
+        "c30": 0.766,
+        "c90": 0.6299
+      },
+      "HYG": {
+        "c30": 0.7728,
+        "c90": 0.6882
+      }
+    },
+    "XLP": {
+      "SPY": {
+        "c30": 0.3563,
+        "c90": 0.1165
+      },
+      "TLT": {
+        "c30": 0.4233,
+        "c90": 0.1864
+      },
+      "GLD": {
+        "c30": 0.3599,
+        "c90": 0.1449
+      },
+      "USO": {
+        "c30": -0.1741,
+        "c90": -0.1016
+      },
+      "UUP": {
+        "c30": -0.3225,
+        "c90": -0.1252
+      },
+      "EEM": {
+        "c30": 0.4975,
+        "c90": 0.2816
+      },
+      "HYG": {
+        "c30": 0.4037,
+        "c90": 0.2482
+      }
+    },
+    "XLU": {
+      "SPY": {
+        "c30": 0.3235,
+        "c90": 0.19
+      },
+      "TLT": {
+        "c30": 0.6388,
+        "c90": 0.4973
+      },
+      "GLD": {
+        "c30": 0.3132,
+        "c90": 0.1923
+      },
+      "USO": {
+        "c30": -0.2032,
+        "c90": -0.1034
+      },
+      "UUP": {
+        "c30": -0.2186,
+        "c90": -0.1696
+      },
+      "EEM": {
+        "c30": 0.4239,
+        "c90": 0.3193
+      },
+      "HYG": {
+        "c30": 0.4613,
+        "c90": 0.3027
+      }
+    },
+    "XLB": {
+      "SPY": {
+        "c30": 0.7103,
+        "c90": 0.5859
+      },
+      "TLT": {
+        "c30": 0.4104,
+        "c90": 0.2087
+      },
+      "GLD": {
+        "c30": 0.5268,
+        "c90": 0.4978
+      },
+      "USO": {
+        "c30": -0.5434,
+        "c90": -0.2422
+      },
+      "UUP": {
+        "c30": -0.4152,
+        "c90": -0.2632
+      },
+      "EEM": {
+        "c30": 0.7369,
+        "c90": 0.6043
+      },
+      "HYG": {
+        "c30": 0.5924,
+        "c90": 0.4571
+      }
+    },
+    "XLRE": {
+      "SPY": {
+        "c30": 0.7136,
+        "c90": 0.4767
+      },
+      "TLT": {
+        "c30": 0.6255,
+        "c90": 0.4282
+      },
+      "GLD": {
+        "c30": 0.314,
+        "c90": 0.1094
+      },
+      "USO": {
+        "c30": -0.3673,
+        "c90": -0.1647
+      },
+      "UUP": {
+        "c30": -0.4216,
+        "c90": -0.2037
+      },
+      "EEM": {
+        "c30": 0.6255,
+        "c90": 0.397
+      },
+      "HYG": {
+        "c30": 0.765,
+        "c90": 0.5392
+      }
+    },
+    "EWU": {
+      "SPY": {
+        "c30": 0.8281,
+        "c90": 0.7609
+      },
+      "TLT": {
+        "c30": 0.5539,
+        "c90": 0.2747
+      },
+      "GLD": {
+        "c30": 0.6175,
+        "c90": 0.4209
+      },
+      "USO": {
+        "c30": -0.5825,
+        "c90": -0.3594
+      },
+      "UUP": {
+        "c30": -0.6542,
+        "c90": -0.4482
+      },
+      "EEM": {
+        "c30": 0.9244,
+        "c90": 0.8186
+      },
+      "HYG": {
+        "c30": 0.7969,
+        "c90": 0.7072
+      }
+    },
+    "EWG": {
+      "SPY": {
+        "c30": 0.8413,
+        "c90": 0.7867
+      },
+      "TLT": {
+        "c30": 0.5903,
+        "c90": 0.4255
+      },
+      "GLD": {
+        "c30": 0.438,
+        "c90": 0.2987
+      },
+      "USO": {
+        "c30": -0.6645,
+        "c90": -0.537
+      },
+      "UUP": {
+        "c30": -0.7375,
+        "c90": -0.5502
+      },
+      "EEM": {
+        "c30": 0.9176,
+        "c90": 0.8339
+      },
+      "HYG": {
+        "c30": 0.8221,
+        "c90": 0.7825
+      }
+    },
+    "EWQ": {
+      "SPY": {
+        "c30": 0.822,
+        "c90": 0.7473
+      },
+      "TLT": {
+        "c30": 0.5254,
+        "c90": 0.3587
+      },
+      "GLD": {
+        "c30": 0.425,
+        "c90": 0.2973
+      },
+      "USO": {
+        "c30": -0.642,
+        "c90": -0.4985
+      },
+      "UUP": {
+        "c30": -0.7428,
+        "c90": -0.5413
+      },
+      "EEM": {
+        "c30": 0.922,
+        "c90": 0.8278
+      },
+      "HYG": {
+        "c30": 0.7928,
+        "c90": 0.7315
+      }
+    },
+    "EWI": {
+      "SPY": {
+        "c30": 0.8523,
+        "c90": 0.7272
+      },
+      "TLT": {
+        "c30": 0.5145,
+        "c90": 0.2831
+      },
+      "GLD": {
+        "c30": 0.5193,
+        "c90": 0.3443
+      },
+      "USO": {
+        "c30": -0.6476,
+        "c90": -0.4475
+      },
+      "UUP": {
+        "c30": -0.7276,
+        "c90": -0.5487
+      },
+      "EEM": {
+        "c30": 0.9257,
+        "c90": 0.7908
+      },
+      "HYG": {
+        "c30": 0.8463,
+        "c90": 0.7421
+      }
+    },
+    "EWP": {
+      "SPY": {
+        "c30": 0.8218,
+        "c90": 0.7334
+      },
+      "TLT": {
+        "c30": 0.4401,
+        "c90": 0.2149
+      },
+      "GLD": {
+        "c30": 0.4934,
+        "c90": 0.2612
+      },
+      "USO": {
+        "c30": -0.6052,
+        "c90": -0.4164
+      },
+      "UUP": {
+        "c30": -0.6715,
+        "c90": -0.493
+      },
+      "EEM": {
+        "c30": 0.9308,
+        "c90": 0.7702
+      },
+      "HYG": {
+        "c30": 0.7942,
+        "c90": 0.7151
+      }
+    },
+    "VGK": {
+      "SPY": {
+        "c30": 0.8663,
+        "c90": 0.8283
+      },
+      "TLT": {
+        "c30": 0.5393,
+        "c90": 0.3555
+      },
+      "GLD": {
+        "c30": 0.517,
+        "c90": 0.3498
+      },
+      "USO": {
+        "c30": -0.6593,
+        "c90": -0.4978
+      },
+      "UUP": {
+        "c30": -0.7283,
+        "c90": -0.562
+      },
+      "EEM": {
+        "c30": 0.9427,
+        "c90": 0.8774
+      },
+      "HYG": {
+        "c30": 0.8175,
+        "c90": 0.7777
+      }
+    },
+    "EWJ": {
+      "SPY": {
+        "c30": 0.8302,
+        "c90": 0.7292
+      },
+      "TLT": {
+        "c30": 0.4933,
+        "c90": 0.3516
+      },
+      "GLD": {
+        "c30": 0.4733,
+        "c90": 0.3516
+      },
+      "USO": {
+        "c30": -0.7211,
+        "c90": -0.4913
+      },
+      "UUP": {
+        "c30": -0.6944,
+        "c90": -0.471
+      },
+      "EEM": {
+        "c30": 0.9283,
+        "c90": 0.806
+      },
+      "HYG": {
+        "c30": 0.7837,
+        "c90": 0.7011
+      }
+    },
+    "EWZ": {
+      "SPY": {
+        "c30": 0.7885,
+        "c90": 0.5807
+      },
+      "TLT": {
+        "c30": 0.4597,
+        "c90": 0.2078
+      },
+      "GLD": {
+        "c30": 0.4843,
+        "c90": 0.4225
+      },
+      "USO": {
+        "c30": -0.6228,
+        "c90": -0.35
+      },
+      "UUP": {
+        "c30": -0.6477,
+        "c90": -0.444
+      },
+      "EEM": {
+        "c30": 0.8885,
+        "c90": 0.7279
+      },
+      "HYG": {
+        "c30": 0.7893,
+        "c90": 0.5757
+      }
+    },
+    "EEM": {
+      "SPY": {
+        "c30": 0.8507,
+        "c90": 0.7893
+      },
+      "TLT": {
+        "c30": 0.455,
+        "c90": 0.2809
+      },
+      "GLD": {
+        "c30": 0.5338,
+        "c90": 0.4446
+      },
+      "USO": {
+        "c30": -0.7065,
+        "c90": -0.5112
+      },
+      "UUP": {
+        "c30": -0.7257,
+        "c90": -0.5062
+      },
+      "HYG": {
+        "c30": 0.7986,
+        "c90": 0.7212
+      }
+    },
+    "FXI": {
+      "SPY": {
+        "c30": 0.7538,
+        "c90": 0.6035
+      },
+      "TLT": {
+        "c30": 0.5946,
+        "c90": 0.1914
+      },
+      "GLD": {
+        "c30": 0.5928,
+        "c90": 0.4531
+      },
+      "USO": {
+        "c30": -0.4419,
+        "c90": -0.1651
+      },
+      "UUP": {
+        "c30": -0.5678,
+        "c90": -0.315
+      },
+      "EEM": {
+        "c30": 0.8724,
+        "c90": 0.7606
+      },
+      "HYG": {
+        "c30": 0.7593,
+        "c90": 0.5281
+      }
+    },
+    "TLT": {
+      "SPY": {
+        "c30": 0.417,
+        "c90": 0.2627
+      },
+      "GLD": {
+        "c30": 0.1134,
+        "c90": -0.0022
+      },
+      "USO": {
+        "c30": -0.321,
+        "c90": -0.2686
+      },
+      "UUP": {
+        "c30": -0.3874,
+        "c90": -0.1884
+      },
+      "EEM": {
+        "c30": 0.455,
+        "c90": 0.2809
+      },
+      "HYG": {
+        "c30": 0.6446,
+        "c90": 0.4936
+      }
+    },
+    "IEF": {
+      "SPY": {
+        "c30": 0.4937,
+        "c90": 0.2554
+      },
+      "TLT": {
+        "c30": 0.9057,
+        "c90": 0.9062
+      },
+      "GLD": {
+        "c30": 0.378,
+        "c90": 0.1232
+      },
+      "USO": {
+        "c30": -0.3205,
+        "c90": -0.271
+      },
+      "UUP": {
+        "c30": -0.4264,
+        "c90": -0.2596
+      },
+      "EEM": {
+        "c30": 0.5769,
+        "c90": 0.3449
+      },
+      "HYG": {
+        "c30": 0.6785,
+        "c90": 0.531
+      }
+    },
+    "SHY": {
+      "SPY": {
+        "c30": 0.4151,
+        "c90": 0.195
+      },
+      "TLT": {
+        "c30": 0.6812,
+        "c90": 0.6027
+      },
+      "GLD": {
+        "c30": 0.4863,
+        "c90": 0.1585
+      },
+      "USO": {
+        "c30": -0.3058,
+        "c90": -0.272
+      },
+      "UUP": {
+        "c30": -0.4444,
+        "c90": -0.2903
+      },
+      "EEM": {
+        "c30": 0.5853,
+        "c90": 0.3759
+      },
+      "HYG": {
+        "c30": 0.592,
+        "c90": 0.4927
+      }
+    },
+    "LQD": {
+      "SPY": {
+        "c30": 0.6755,
+        "c90": 0.5109
+      },
+      "TLT": {
+        "c30": 0.886,
+        "c90": 0.8802
+      },
+      "GLD": {
+        "c30": 0.2432,
+        "c90": 0.0742
+      },
+      "USO": {
+        "c30": -0.4415,
+        "c90": -0.3489
+      },
+      "UUP": {
+        "c30": -0.5417,
+        "c90": -0.3066
+      },
+      "EEM": {
+        "c30": 0.6237,
+        "c90": 0.4821
+      },
+      "HYG": {
+        "c30": 0.882,
+        "c90": 0.7791
+      }
+    },
+    "HYG": {
+      "SPY": {
+        "c30": 0.8781,
+        "c90": 0.7949
+      },
+      "TLT": {
+        "c30": 0.6446,
+        "c90": 0.4936
+      },
+      "GLD": {
+        "c30": 0.3552,
+        "c90": 0.1756
+      },
+      "USO": {
+        "c30": -0.5996,
+        "c90": -0.4662
+      },
+      "UUP": {
+        "c30": -0.6209,
+        "c90": -0.3985
+      },
+      "EEM": {
+        "c30": 0.7986,
+        "c90": 0.7212
+      }
+    },
+    "EMB": {
+      "SPY": {
+        "c30": 0.8724,
+        "c90": 0.7103
+      },
+      "TLT": {
+        "c30": 0.6808,
+        "c90": 0.6426
+      },
+      "GLD": {
+        "c30": 0.429,
+        "c90": 0.2037
+      },
+      "USO": {
+        "c30": -0.6526,
+        "c90": -0.5391
+      },
+      "UUP": {
+        "c30": -0.668,
+        "c90": -0.4142
+      },
+      "EEM": {
+        "c30": 0.8431,
+        "c90": 0.7108
+      },
+      "HYG": {
+        "c30": 0.9147,
+        "c90": 0.8611
+      }
+    },
+    "GLD": {
+      "SPY": {
+        "c30": 0.4258,
+        "c90": 0.2424
+      },
+      "TLT": {
+        "c30": 0.1134,
+        "c90": -0.0022
+      },
+      "USO": {
+        "c30": -0.0348,
+        "c90": 0.0835
+      },
+      "UUP": {
+        "c30": -0.23,
+        "c90": -0.394
+      },
+      "EEM": {
+        "c30": 0.5338,
+        "c90": 0.4446
+      },
+      "HYG": {
+        "c30": 0.3552,
+        "c90": 0.1756
+      }
+    },
+    "SLV": {
+      "SPY": {
+        "c30": 0.5166,
+        "c90": 0.3165
+      },
+      "TLT": {
+        "c30": 0.382,
+        "c90": 0.032
+      },
+      "GLD": {
+        "c30": 0.819,
+        "c90": 0.8308
+      },
+      "USO": {
+        "c30": -0.2627,
+        "c90": -0.0363
+      },
+      "UUP": {
+        "c30": -0.5102,
+        "c90": -0.4388
+      },
+      "EEM": {
+        "c30": 0.688,
+        "c90": 0.469
+      },
+      "HYG": {
+        "c30": 0.4792,
+        "c90": 0.1886
+      }
+    },
+    "USO": {
+      "SPY": {
+        "c30": -0.6705,
+        "c90": -0.424
+      },
+      "TLT": {
+        "c30": -0.321,
+        "c90": -0.2686
+      },
+      "GLD": {
+        "c30": -0.0348,
+        "c90": 0.0835
+      },
+      "UUP": {
+        "c30": 0.6478,
+        "c90": 0.3268
+      },
+      "EEM": {
+        "c30": -0.7065,
+        "c90": -0.5112
+      },
+      "HYG": {
+        "c30": -0.5996,
+        "c90": -0.4662
+      }
+    },
+    "DBA": {
+      "SPY": {
+        "c30": -0.2996,
+        "c90": -0.0214
+      },
+      "TLT": {
+        "c30": -0.2491,
+        "c90": -0.0531
+      },
+      "GLD": {
+        "c30": -0.0946,
+        "c90": 0.1011
+      },
+      "USO": {
+        "c30": 0.4733,
+        "c90": 0.376
+      },
+      "UUP": {
+        "c30": 0.2218,
+        "c90": 0.0005
+      },
+      "EEM": {
+        "c30": -0.2876,
+        "c90": -0.0403
+      },
+      "HYG": {
+        "c30": -0.2392,
+        "c90": -0.0764
+      }
+    },
+    "PDBC": {
+      "SPY": {
+        "c30": -0.6378,
+        "c90": -0.2545
+      },
+      "TLT": {
+        "c30": -0.4372,
+        "c90": -0.29
+      },
+      "GLD": {
+        "c30": 0.067,
+        "c90": 0.4776
+      },
+      "USO": {
+        "c30": 0.9312,
+        "c90": 0.8332
+      },
+      "UUP": {
+        "c30": 0.6241,
+        "c90": 0.0834
+      },
+      "EEM": {
+        "c30": -0.64,
+        "c90": -0.2424
+      },
+      "HYG": {
+        "c30": -0.6059,
+        "c90": -0.3697
+      }
+    },
+    "VNQ": {
+      "SPY": {
+        "c30": 0.7626,
+        "c90": 0.5112
+      },
+      "TLT": {
+        "c30": 0.6047,
+        "c90": 0.4466
+      },
+      "GLD": {
+        "c30": 0.3381,
+        "c90": 0.1126
+      },
+      "USO": {
+        "c30": -0.4146,
+        "c90": -0.201
+      },
+      "UUP": {
+        "c30": -0.441,
+        "c90": -0.2025
+      },
+      "EEM": {
+        "c30": 0.6645,
+        "c90": 0.4191
+      },
+      "HYG": {
+        "c30": 0.7907,
+        "c90": 0.5737
+      }
+    },
+    "IAU": {
+      "SPY": {
+        "c30": 0.4287,
+        "c90": 0.243
+      },
+      "TLT": {
+        "c30": 0.1141,
+        "c90": -0.001
+      },
+      "GLD": {
+        "c30": 0.9999,
+        "c90": 0.9999
+      },
+      "USO": {
+        "c30": -0.038,
+        "c90": 0.0806
+      },
+      "UUP": {
+        "c30": -0.2304,
+        "c90": -0.3942
+      },
+      "EEM": {
+        "c30": 0.5353,
+        "c90": 0.4452
+      },
+      "HYG": {
+        "c30": 0.3567,
+        "c90": 0.1765
+      }
+    },
+    "UUP": {
+      "SPY": {
+        "c30": -0.6301,
+        "c90": -0.3406
+      },
+      "TLT": {
+        "c30": -0.3874,
+        "c90": -0.1884
+      },
+      "GLD": {
+        "c30": -0.23,
+        "c90": -0.394
+      },
+      "USO": {
+        "c30": 0.6478,
+        "c90": 0.3268
+      },
+      "EEM": {
+        "c30": -0.7257,
+        "c90": -0.5062
+      },
+      "HYG": {
+        "c30": -0.6209,
+        "c90": -0.3985
+      }
+    },
+    "TIP": {
+      "SPY": {
+        "c30": 0.322,
+        "c90": 0.2161
+      },
+      "TLT": {
+        "c30": 0.8379,
+        "c90": 0.8309
+      },
+      "GLD": {
+        "c30": 0.2978,
+        "c90": 0.1514
+      },
+      "USO": {
+        "c30": -0.0092,
+        "c90": 0.0126
+      },
+      "UUP": {
+        "c30": -0.2158,
+        "c90": -0.1898
+      },
+      "EEM": {
+        "c30": 0.3644,
+        "c90": 0.2648
+      },
+      "HYG": {
+        "c30": 0.5094,
+        "c90": 0.4535
+      }
+    }
+  },
+  "anchors": [
+    "SPY",
+    "TLT",
+    "GLD",
+    "USO",
+    "UUP",
+    "EEM",
+    "HYG"
+  ]
 }
