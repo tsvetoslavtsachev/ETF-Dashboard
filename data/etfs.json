@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-11T19:53:22Z",
+  "updatedAt": "2026-04-11T20:18:16Z",
   "etfs": [
     {
       "symbol": "SPY",
@@ -76,7 +76,7 @@
       "volume": 2628600,
       "return1m": 2.7392,
       "return3m": -2.8209,
-      "return6m": 4.1797,
+      "return6m": 4.1798,
       "return12m": 19.8598,
       "returnYTD": -0.5323,
       "volatility": 14.9277,
@@ -319,7 +319,7 @@
       "return1m": 2.2967,
       "return3m": 6.439,
       "return6m": 5.9541,
-      "return12m": 13.0037,
+      "return12m": 13.0038,
       "returnYTD": 6.7553,
       "volatility": 16.092,
       "sharpe": 0.8081,
@@ -561,11 +561,11 @@
       "return1m": -0.1546,
       "return3m": -0.5373,
       "return6m": -0.8412,
-      "return12m": 1.738,
+      "return12m": 1.7381,
       "returnYTD": 0.4913,
       "volatility": 12.5297,
       "sharpe": 0.1387,
-      "maxDrawdown": -14.7872,
+      "maxDrawdown": -14.7871,
       "rsScore": 2.5,
       "aum": 42618.6,
       "flow1m": -66.0,
@@ -587,7 +587,7 @@
       "returnYTD": 0.1011,
       "volatility": 5.8536,
       "sharpe": 0.7838,
-      "maxDrawdown": -6.8939,
+      "maxDrawdown": -6.8938,
       "rsScore": 12.5,
       "aum": 48925.8,
       "flow1m": -52.5,
@@ -609,7 +609,7 @@
       "returnYTD": 0.3257,
       "volatility": 1.5088,
       "sharpe": 2.3511,
-      "maxDrawdown": -0.9685,
+      "maxDrawdown": -0.9686,
       "rsScore": 15.0,
       "aum": 24748.2,
       "flow1m": 47.1,
@@ -631,7 +631,7 @@
       "returnYTD": 0.2483,
       "volatility": 6.6454,
       "sharpe": 1.0072,
-      "maxDrawdown": -6.2587,
+      "maxDrawdown": -6.2586,
       "rsScore": 25.0,
       "aum": 28883.7,
       "flow1m": 284.2,
@@ -1476,7 +1476,7 @@
       },
       "HYG": {
         "c30": 0.7942,
-        "c90": 0.7151
+        "c90": 0.715
       }
     },
     "VGK": {
@@ -1696,7 +1696,7 @@
       },
       "USO": {
         "c30": -0.3058,
-        "c90": -0.272
+        "c90": -0.2719
       },
       "UUP": {
         "c30": -0.4444,
@@ -1730,7 +1730,7 @@
       },
       "UUP": {
         "c30": -0.5417,
-        "c90": -0.3067
+        "c90": -0.3066
       },
       "EEM": {
         "c30": 0.6237,
