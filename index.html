@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ETF Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+    --orange: #db6d28;
+    --radius: 8px; --font: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 13px; }
+
+  /* NAV */
+  nav { display:flex; align-items:center; gap:4px; padding:12px 20px; background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+  nav .logo { font-weight:700; font-size:15px; color:var(--accent); margin-right:16px; white-space:nowrap; }
+  nav button { background:none; border:none; color:var(--muted); padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:500; transition:all .15s; }
+  nav button.active, nav button:hover { background:var(--accent); color:#fff; }
+  nav .spacer { flex:1; }
+  #last-update { font-size:11px; color:var(--muted); }
+  #search-box { background:var(--bg); border:1px solid var(--border); color:var(--text); padding:5px 10px; border-radius:6px; font-size:12px; width:160px; outline:none; }
+  #search-box:focus { border-color:var(--accent); }
+
+  /* FILTERS */
+  #filter-bar { display:flex; gap:8px; padding:10px 20px; background:var(--surface); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .filter-btn { background:none; border:1px solid var(--border); color:var(--muted); padding:4px 10px; border-radius:20px; cursor:pointer; font-size:11px; transition:all .15s; }
+  .filter-btn.active, .filter-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* SCREENS */
+  .screen { display:none; padding:20px; }
+  .screen.active { display:block; }
+
+  /* HEATMAP */
+  #heatmap-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:6px; }
+  .heat-cell { border-radius:var(--radius); padding:10px 8px; cursor:pointer; transition:transform .1s, box-shadow .1s; text-align:center; }
+  .heat-cell:hover { transform:scale(1.04); box-shadow:0 4px 16px rgba(0,0,0,.5); }
+  .heat-cell .sym { font-weight:700; font-size:13px; }
+  .heat-cell .nm  { font-size:9px; color:rgba(255,255,255,.7); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .heat-cell .ret { font-size:14px; font-weight:700; margin-top:6px; }
+  .heat-cell .rs-pill { font-size:9px; margin-top:4px; background:rgba(0,0,0,.25); border-radius:4px; padding:1px 4px; }
+
+  /* RS TABLE */
+  .table-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; }
+  thead { position:sticky; top:56px; z-index:10; }
+  th { background:var(--surface); padding:8px 10px; text-align:right; color:var(--muted); font-size:11px; font-weight:600; cursor:pointer; user-select:none; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th:first-child, th:nth-child(2), th:nth-child(3) { text-align:left; }
+  th:hover { color:var(--accent); }
+  th .sort-arrow { margin-left:4px; opacity:.4; }
+  th.sorted .sort-arrow { opacity:1; color:var(--accent); }
+  td { padding:7px 10px; border-bottom:1px solid #1c2128; text-align:right; white-space:nowrap; }
+  td:first-child, td:nth-child(2), td:nth-child(3) { text-align:left; }
+  tr:hover td { background:rgba(88,166,255,.05); cursor:pointer; }
+  .badge { display:inline-block; padding:1px 6px; border-radius:4px; font-size:10px; font-weight:600; }
+  .badge-sector   { background:#1f3a5f; color:#79b8ff; }
+  .badge-us       { background:#1a3a2a; color:#56d364; }
+  .badge-intl     { background:#3a2a1a; color:#f0883e; }
+  .badge-fi       { background:#2a1a3a; color:#bc8cff; }
+  .badge-commodity{ background:#3a2a00; color:#e3b341; }
+  .badge-re       { background:#1a2a3a; color:#58a6ff; }
+  .badge-currency { background:#1a2a2a; color:#39d353; }
+
+  /* RS BAR */
+  .rs-bar-wrap { display:flex; align-items:center; gap:6px; justify-content:flex-end; }
+  .rs-bar { height:6px; border-radius:3px; min-width:2px; }
+
+  /* DRILL DOWN */
+  #drill-header { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+  #drill-header h2 { font-size:20px; }
+  #drill-header .back-btn { background:var(--surface); border:1px solid var(--border); color:var(--muted); padding:5px 12px; border-radius:6px; cursor:pointer; font-size:12px; }
+  #drill-header .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .drill-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:700px) { .drill-grid { grid-template-columns:1fr; } }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; }
+  .card h3 { font-size:12px; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.05em; }
+  .metric-row { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid #1c2128; font-size:12px; }
+  .metric-row:last-child { border:none; }
+
+  /* INTERMARKET */
+  #corr-table-wrap { overflow-x:auto; }
+  #corr-table th, #corr-table td { padding:7px 12px; }
+  .corr-cell { border-radius:4px; padding:3px 7px; font-size:11px; font-weight:600; display:inline-block; min-width:48px; text-align:center; }
+
+  /* UTIL */
+  .pos { color:var(--green); }
+  .neg { color:var(--red); }
+  .neu { color:var(--muted); }
+  .section-title { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; margin-top:20px; }
+  .loading { text-align:center; padding:60px; color:var(--muted); font-size:14px; }
+  .spinner { display:inline-block; width:24px; height:24px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin-right:10px; vertical-align:middle; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">ETF Dashboard</span>
+  <button id="btn-heatmap" class="active" onclick="showScreen('heatmap')">Heatmap</button>
+  <button id="btn-rs"      onclick="showScreen('rs')">Relative Strength</button>
+  <button id="btn-intermarket" onclick="showScreen('intermarket')">Intermarket</button>
+  <span class="spacer"></span>
+  <input id="search-box" type="text" placeholder="Search ticker / name…" oninput="applyFilters()"/>
+  <span id="last-update"></span>
+</nav>
+
+<div id="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+  <button class="filter-btn" onclick="setFilter('US Equity',this)">US Equity</button>
+  <button class="filter-btn" onclick="setFilter('Sector',this)">Sectors</button>
+  <button class="filter-btn" onclick="setFilter('Intl Equity',this)">International</button>
+  <button class="filter-btn" onclick="setFilter('Fixed Income',this)">Fixed Income</button>
+  <button class="filter-btn" onclick="setFilter('Commodity',this)">Commodities</button>
+  <button class="filter-btn" onclick="setFilter('Real Estate',this)">Real Estate</button>
+  <button class="filter-btn" onclick="setFilter('Currency',this)">Currency</button>
+</div>
+
+<!-- HEATMAP SCREEN -->
+<div id="screen-heatmap" class="screen active">
+  <p class="section-title">YTD Performance Heatmap — click a cell to open drill-down</p>
+  <div id="heatmap-grid"><div class="loading"><span class="spinner"></span>Loading data…</div></div>
+</div>
+
+<!-- RELATIVE STRENGTH SCREEN -->
+<div id="screen-rs" class="screen">
+  <div class="table-wrap">
+    <table id="rs-table">
+      <thead>
+        <tr>
+          <th onclick="sortTable('symbol')"      >Ticker <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('name')"        >Name   <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('category')"    >Category <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('price')"       >Price <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('returnYTD')"   >YTD % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('return1m')"    >1M % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('return3m')"    >3M % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('return6m')"    >6M % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('return12m')"   >12M % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('volatility')"  >Vol % <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('sharpe')"      >Sharpe <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('maxDrawdown')" >Max DD <span class="sort-arrow">↕</span></th>
+          <th onclick="sortTable('rsScore')"     >RS Score <span class="sort-arrow">↕</span></th>
+        </tr>
+      </thead>
+      <tbody id="rs-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DRILL DOWN SCREEN -->
+<div id="screen-drill" class="screen">
+  <div id="drill-header">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <h2 id="drill-title">—</h2>
+  </div>
+  <div class="drill-grid" id="drill-content"></div>
+</div>
+
+<!-- INTERMARKET SCREEN -->
+<div id="screen-intermarket" class="screen">
+  <p class="section-title">30-day rolling correlation vs anchor assets</p>
+  <div id="corr-table-wrap">
+    <div class="loading"><span class="spinner"></span>Loading…</div>
+  </div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────────
+let ALL_DATA = [];
+let CORR_DATA = {};
+let ANCHORS = [];
+let activeFilter = 'all';
+let sortKey = 'rsScore';
+let sortDir = -1; // -1 = desc
+let previousScreen = 'heatmap';
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const resp = await fetch('data/etfs.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('data/etfs.json not found');
+    const json = await resp.json();
+    ALL_DATA  = json.etfs || [];
+    CORR_DATA = json.intermarket || {};
+    ANCHORS   = json.anchors || [];
+    if (json.updatedAt) {
+      const d = new Date(json.updatedAt);
+      document.getElementById('last-update').textContent =
+        'Updated: ' + d.toLocaleString('en-GB', {day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'short'});
+    }
+    applyFilters();
+    renderIntermarket();
+  } catch(e) {
+    document.getElementById('heatmap-grid').innerHTML =
+      '<div class="loading" style="color:var(--red)">⚠ Could not load data/etfs.json.<br>Run fetch_data.py to generate it.</div>';
+    console.error(e);
+  }
+}
+
+// ── Filter / search ──────────────────────────────────────────────────────────
+function setFilter(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function filteredData() {
+  const q = document.getElementById('search-box').value.trim().toLowerCase();
+  return ALL_DATA.filter(e => {
+    const catMatch = activeFilter === 'all' || e.category === activeFilter;
+    const qMatch = !q || e.symbol.toLowerCase().includes(q) || e.name.toLowerCase().includes(q);
+    return catMatch && qMatch;
+  });
+}
+
+function applyFilters() {
+  renderHeatmap(filteredData());
+  renderRS(filteredData());
+}
+
+// ── Screens ───────────────────────────────────────────────────────────────────
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  const btn = document.getElementById('btn-' + name);
+  if (btn) btn.classList.add('active');
+  if (name !== 'drill') previousScreen = name;
+}
+function goBack() { showScreen(previousScreen); }
+
+// ── Colour helpers ────────────────────────────────────────────────────────────
+function retColor(v) {
+  if (v == null) return '#333';
+  if (v >= 20)  return '#1a4a2a';
+  if (v >= 10)  return '#1a3a1a';
+  if (v >= 5)   return '#1e3520';
+  if (v >= 2)   return '#22382a';
+  if (v >= 0)   return '#1c2e20';
+  if (v >= -2)  return '#2e1c1c';
+  if (v >= -5)  return '#3a1a1a';
+  if (v >= -10) return '#4a1a1a';
+  return '#5a1a1a';
+}
+function retText(v) {
+  if (v == null) return 'var(--muted)';
+  return v >= 0 ? 'var(--green)' : 'var(--red)';
+}
+function fmt(v, dec=2) { return v == null ? '—' : (+v).toFixed(dec); }
+function fmtPct(v) {
+  if (v == null) return '<span class="neu">—</span>';
+  const cls = v >= 0 ? 'pos' : 'neg';
+  return `<span class="${cls}">${v >= 0 ? '+' : ''}${(+v).toFixed(2)}%</span>`;
+}
+function categoryBadge(cat) {
+  const map = {
+    'US Equity':'badge-us','Sector':'badge-sector','Intl Equity':'badge-intl',
+    'Fixed Income':'badge-fi','Commodity':'badge-commodity','Real Estate':'badge-re','Currency':'badge-currency'
+  };
+  return `<span class="badge ${map[cat]||'badge-sector'}">${cat}</span>`;
+}
+function rsBarColor(rs) {
+  if (rs == null) return '#333';
+  if (rs >= 80) return '#3fb950';
+  if (rs >= 60) return '#57ab5a';
+  if (rs >= 40) return '#d29922';
+  if (rs >= 20) return '#f0883e';
+  return '#f85149';
+}
+function corrColor(v) {
+  if (v == null) return 'background:#333;color:var(--muted)';
+  const abs = Math.abs(v);
+  if (v > 0.7)  return 'background:#1a4a2a;color:#3fb950';
+  if (v > 0.3)  return 'background:#1e3520;color:#56d364';
+  if (v > -0.3) return 'background:#2a2a2a;color:#8b949e';
+  if (v > -0.7) return 'background:#3a2020;color:#f0883e';
+  return 'background:#4a1a1a;color:#f85149';
+}
+
+// ── Heatmap ───────────────────────────────────────────────────────────────────
+function renderHeatmap(data) {
+  const grid = document.getElementById('heatmap-grid');
+  if (!data.length) { grid.innerHTML = '<div class="loading">No ETFs match filter.</div>'; return; }
+  grid.innerHTML = data.map(e => `
+    <div class="heat-cell" onclick="openDrill('${e.symbol}')"
+         style="background:${retColor(e.returnYTD)}; border:1px solid rgba(255,255,255,.06)">
+      <div class="sym">${e.symbol}</div>
+      <div class="nm">${e.name}</div>
+      <div class="ret" style="color:${retText(e.returnYTD)}">${fmtPct(e.returnYTD).replace(/<[^>]+>/g,'')}</div>
+      <div class="rs-pill">RS ${e.rsScore != null ? e.rsScore.toFixed(0) : '—'}</div>
+    </div>`).join('');
+}
+
+// ── Relative Strength table ───────────────────────────────────────────────────
+function sortTable(key) {
+  if (sortKey === key) sortDir *= -1;
+  else { sortKey = key; sortDir = -1; }
+  document.querySelectorAll('th .sort-arrow').forEach(el => el.textContent = '↕');
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  const headers = document.querySelectorAll('#rs-table th');
+  const keys = ['symbol','name','category','price','returnYTD','return1m','return3m','return6m','return12m','volatility','sharpe','maxDrawdown','rsScore'];
+  const idx = keys.indexOf(key);
+  if (idx >= 0) {
+    headers[idx].classList.add('sorted');
+    headers[idx].querySelector('.sort-arrow').textContent = sortDir > 0 ? '↑' : '↓';
+  }
+  renderRS(filteredData());
+}
+
+function renderRS(data) {
+  const sorted = [...data].sort((a, b) => {
+    const av = a[sortKey], bv = b[sortKey];
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;
+    if (bv == null) return -1;
+    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+    return sortDir * (av - bv);
+  });
+
+  document.getElementById('rs-body').innerHTML = sorted.map(e => {
+    const rs = e.rsScore;
+    const barW = rs != null ? Math.round(rs * 0.6) : 0;
+    return `<tr onclick="openDrill('${e.symbol}')">
+      <td><b>${e.symbol}</b></td>
+      <td>${e.name}</td>
+      <td>${categoryBadge(e.category)}</td>
+      <td>$${fmt(e.price)}</td>
+      <td>${fmtPct(e.returnYTD)}</td>
+      <td>${fmtPct(e.return1m)}</td>
+      <td>${fmtPct(e.return3m)}</td>
+      <td>${fmtPct(e.return6m)}</td>
+      <td>${fmtPct(e.return12m)}</td>
+      <td>${e.volatility != null ? fmt(e.volatility)+'%' : '—'}</td>
+      <td>${fmt(e.sharpe)}</td>
+      <td>${e.maxDrawdown != null ? fmt(e.maxDrawdown)+'%' : '—'}</td>
+      <td>
+        <div class="rs-bar-wrap">
+          <div class="rs-bar" style="width:${barW}px;background:${rsBarColor(rs)}"></div>
+          <span style="color:${rsBarColor(rs)};font-weight:700">${rs != null ? rs.toFixed(0) : '—'}</span>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Drill-down ────────────────────────────────────────────────────────────────
+function openDrill(symbol) {
+  const e = ALL_DATA.find(x => x.symbol === symbol);
+  if (!e) return;
+  document.getElementById('drill-title').textContent = `${e.symbol} — ${e.name}`;
+
+  const corr = CORR_DATA[symbol] || {};
+  const corrRows = ANCHORS.filter(a => a !== symbol && corr[a])
+    .map(a => {
+      const c30 = corr[a]?.c30;
+      return `<div class="metric-row"><span>${a}</span>
+        <span><span class="corr-cell" style="${corrColor(c30)}">${c30 != null ? c30.toFixed(2) : '—'}</span></span></div>`;
+    }).join('');
+
+  document.getElementById('drill-content').innerHTML = `
+    <div class="card">
+      <h3>Performance</h3>
+      <div class="metric-row"><span>Price</span><span>$${fmt(e.price)}</span></div>
+      <div class="metric-row"><span>YTD</span><span>${fmtPct(e.returnYTD)}</span></div>
+      <div class="metric-row"><span>1 Month</span><span>${fmtPct(e.return1m)}</span></div>
+      <div class="metric-row"><span>3 Month</span><span>${fmtPct(e.return3m)}</span></div>
+      <div class="metric-row"><span>6 Month</span><span>${fmtPct(e.return6m)}</span></div>
+      <div class="metric-row"><span>12 Month</span><span>${fmtPct(e.return12m)}</span></div>
+    </div>
+    <div class="card">
+      <h3>Risk Metrics</h3>
+      <div class="metric-row"><span>Ann. Volatility</span><span>${e.volatility != null ? fmt(e.volatility)+'%' : '—'}</span></div>
+      <div class="metric-row"><span>Sharpe Ratio</span><span>${fmt(e.sharpe)}</span></div>
+      <div class="metric-row"><span>Max Drawdown (1Y)</span><span class="neg">${e.maxDrawdown != null ? fmt(e.maxDrawdown)+'%' : '—'}</span></div>
+      <div class="metric-row"><span>RS Score (0–100)</span>
+        <span style="color:${rsBarColor(e.rsScore)};font-weight:700">${e.rsScore != null ? e.rsScore.toFixed(1) : '—'}</span></div>
+      <div class="metric-row"><span>Category</span><span>${categoryBadge(e.category)}</span></div>
+      <div class="metric-row"><span>Region</span><span>${e.region}</span></div>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <h3>30-Day Correlation vs Anchors</h3>
+      ${corrRows || '<span class="neu">No correlation data available.</span>'}
+    </div>`;
+
+  showScreen('drill');
+}
+
+// ── Intermarket ───────────────────────────────────────────────────────────────
+function renderIntermarket() {
+  const wrap = document.getElementById('corr-table-wrap');
+  if (!ALL_DATA.length) return;
+
+  // Show correlations of all ETFs vs anchors
+  const rows = ALL_DATA.map(e => {
+    const corr = CORR_DATA[e.symbol] || {};
+    const cells = ANCHORS.filter(a => a !== e.symbol).map(a => {
+      const c = corr[a]?.c30;
+      return `<td><span class="corr-cell" style="${corrColor(c)}">${c != null ? c.toFixed(2) : '—'}</span></td>`;
+    }).join('');
+    return `<tr onclick="openDrill('${e.symbol}')"><td><b>${e.symbol}</b></td><td>${e.name}</td>${cells}</tr>`;
+  }).join('');
+
+  const anchorHeaders = ANCHORS.map(a => `<th>${a}</th>`).join('');
+
+  wrap.innerHTML = `
+    <table id="corr-table">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Name</th>
+          ${anchorHeaders}
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
