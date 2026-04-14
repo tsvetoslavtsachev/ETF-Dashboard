@@ -23,54 +23,114 @@ import yfinance as yf
 
 # ── ETF Universe ─────────────────────────────────────────────────────────────
 ETF_UNIVERSE = [
-    # US Broad Market
-    {"symbol": "SPY",  "name": "SPDR S&P 500",            "category": "US Equity",    "region": "US"},
-    {"symbol": "QQQ",  "name": "Invesco Nasdaq 100",       "category": "US Equity",    "region": "US"},
-    {"symbol": "IWM",  "name": "iShares Russell 2000",     "category": "US Equity",    "region": "US"},
-    {"symbol": "DIA",  "name": "SPDR Dow Jones",           "category": "US Equity",    "region": "US"},
-    {"symbol": "VTI",  "name": "Vanguard Total Market",    "category": "US Equity",    "region": "US"},
-    # US Sectors
-    {"symbol": "XLK",  "name": "Technology Select",        "category": "Sector",       "region": "US"},
-    {"symbol": "XLF",  "name": "Financial Select",         "category": "Sector",       "region": "US"},
-    {"symbol": "XLE",  "name": "Energy Select",            "category": "Sector",       "region": "US"},
-    {"symbol": "XLV",  "name": "Health Care Select",       "category": "Sector",       "region": "US"},
-    {"symbol": "XLI",  "name": "Industrial Select",        "category": "Sector",       "region": "US"},
-    {"symbol": "XLY",  "name": "Consumer Discret Select",  "category": "Sector",       "region": "US"},
-    {"symbol": "XLP",  "name": "Consumer Staples Select",  "category": "Sector",       "region": "US"},
-    {"symbol": "XLU",  "name": "Utilities Select",         "category": "Sector",       "region": "US"},
-    {"symbol": "XLB",  "name": "Materials Select",         "category": "Sector",       "region": "US"},
-    {"symbol": "XLRE", "name": "Real Estate Select",       "category": "Sector",       "region": "US"},
-    # International / Regional
-    {"symbol": "EWU",  "name": "iShares MSCI UK",          "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "EWG",  "name": "iShares MSCI Germany",     "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "EWQ",  "name": "iShares MSCI France",      "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "EWI",  "name": "iShares MSCI Italy",       "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "EWP",  "name": "iShares MSCI Spain",       "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "VGK",  "name": "Vanguard FTSE Europe",     "category": "Intl Equity",  "region": "Europe"},
-    {"symbol": "EWJ",  "name": "iShares MSCI Japan",       "category": "Intl Equity",  "region": "Asia"},
-    {"symbol": "EWZ",  "name": "iShares MSCI Brazil",      "category": "Intl Equity",  "region": "EM"},
-    {"symbol": "EEM",  "name": "iShares MSCI EM",          "category": "Intl Equity",  "region": "EM"},
-    {"symbol": "FXI",  "name": "iShares China Large-Cap",  "category": "Intl Equity",  "region": "Asia"},
-    # Fixed Income
-    {"symbol": "TLT",  "name": "iShares 20+ Yr Treasury",  "category": "Fixed Income", "region": "US"},
-    {"symbol": "IEF",  "name": "iShares 7-10 Yr Treasury", "category": "Fixed Income", "region": "US"},
-    {"symbol": "SHY",  "name": "iShares 1-3 Yr Treasury",  "category": "Fixed Income", "region": "US"},
-    {"symbol": "LQD",  "name": "iShares IG Corp Bond",     "category": "Fixed Income", "region": "US"},
-    {"symbol": "HYG",  "name": "iShares High Yield Bond",  "category": "Fixed Income", "region": "US"},
-    {"symbol": "EMB",  "name": "iShares EM Bond",          "category": "Fixed Income", "region": "EM"},
-    # Commodities
-    {"symbol": "GLD",  "name": "SPDR Gold Shares",         "category": "Commodity",    "region": "Global"},
-    {"symbol": "SLV",  "name": "iShares Silver Trust",     "category": "Commodity",    "region": "Global"},
-    {"symbol": "USO",  "name": "United States Oil Fund",   "category": "Commodity",    "region": "Global"},
-    {"symbol": "DBA",  "name": "Invesco DB Agriculture",   "category": "Commodity",    "region": "Global"},
-    {"symbol": "PDBC", "name": "Invesco Commodity",        "category": "Commodity",    "region": "Global"},
-    # Real Assets
-    {"symbol": "VNQ",  "name": "Vanguard Real Estate",     "category": "Real Estate",  "region": "US"},
-    {"symbol": "IAU",  "name": "iShares Gold Trust",       "category": "Commodity",    "region": "Global"},
-    # Macro / Currency
-    {"symbol": "UUP",  "name": "Invesco DB US Dollar",     "category": "Currency",     "region": "Global"},
-    {"symbol": "TIP",  "name": "iShares TIPS Bond",        "category": "Fixed Income", "region": "US"},
-    {"symbol": "PDBC", "name": "Invesco Optimum Yield Commodity", "category": "Commodity", "region": "Global"},
+    # ── US Broad Market ──────────────────────────────────────────────────────
+    {"symbol": "SPY",  "name": "SPDR S&P 500",              "category": "US Equity",    "region": "US"},
+    {"symbol": "QQQ",  "name": "Invesco Nasdaq 100",         "category": "US Equity",    "region": "US"},
+    {"symbol": "IWM",  "name": "iShares Russell 2000",       "category": "US Equity",    "region": "US"},
+    {"symbol": "DIA",  "name": "SPDR Dow Jones",             "category": "US Equity",    "region": "US"},
+    {"symbol": "VTI",  "name": "Vanguard Total Market",      "category": "US Equity",    "region": "US"},
+    {"symbol": "MDY",  "name": "SPDR S&P 400 Mid-Cap",       "category": "US Equity",    "region": "US"},
+
+    # ── US Sectors ───────────────────────────────────────────────────────────
+    {"symbol": "XLK",  "name": "Technology Select",          "category": "Sector",       "region": "US"},
+    {"symbol": "XLF",  "name": "Financial Select",           "category": "Sector",       "region": "US"},
+    {"symbol": "XLE",  "name": "Energy Select",              "category": "Sector",       "region": "US"},
+    {"symbol": "XLV",  "name": "Health Care Select",         "category": "Sector",       "region": "US"},
+    {"symbol": "XLI",  "name": "Industrial Select",          "category": "Sector",       "region": "US"},
+    {"symbol": "XLY",  "name": "Consumer Discret Select",    "category": "Sector",       "region": "US"},
+    {"symbol": "XLP",  "name": "Consumer Staples Select",    "category": "Sector",       "region": "US"},
+    {"symbol": "XLU",  "name": "Utilities Select",           "category": "Sector",       "region": "US"},
+    {"symbol": "XLB",  "name": "Materials Select",           "category": "Sector",       "region": "US"},
+    {"symbol": "XLRE", "name": "Real Estate Select",         "category": "Sector",       "region": "US"},
+    {"symbol": "XLC",  "name": "Communication Services",     "category": "Sector",       "region": "US"},
+
+    # ── Factors ──────────────────────────────────────────────────────────────
+    {"symbol": "QUAL", "name": "iShares MSCI Quality",       "category": "Factor",       "region": "US"},
+    {"symbol": "MTUM", "name": "iShares MSCI Momentum",      "category": "Factor",       "region": "US"},
+    {"symbol": "USMV", "name": "iShares Min Volatility",     "category": "Factor",       "region": "US"},
+    {"symbol": "VLUE", "name": "iShares MSCI Value",         "category": "Factor",       "region": "US"},
+    {"symbol": "SIZE", "name": "iShares MSCI USA Size",      "category": "Factor",       "region": "US"},
+
+    # ── Thematic: Defense ────────────────────────────────────────────────────
+    {"symbol": "ITA",  "name": "iShares US Aerospace & Def","category": "Thematic",     "region": "US"},
+    {"symbol": "XAR",  "name": "SPDR Aerospace & Defense",   "category": "Thematic",     "region": "US"},
+    {"symbol": "DFEN", "name": "Direxion Daily Aerospace 3x","category": "Thematic",     "region": "US"},
+
+    # ── Thematic: Nuclear & Uranium ──────────────────────────────────────────
+    {"symbol": "URA",  "name": "VanEck Uranium & Nuclear",   "category": "Thematic",     "region": "Global"},
+    {"symbol": "URNM", "name": "Sprott Uranium Miners",      "category": "Thematic",     "region": "Global"},
+    {"symbol": "NLR",  "name": "VanEck Nuclear Energy",      "category": "Thematic",     "region": "Global"},
+
+    # ── Thematic: Clean Energy ───────────────────────────────────────────────
+    {"symbol": "ICLN", "name": "iShares Global Clean Energy","category": "Thematic",     "region": "Global"},
+    {"symbol": "QCLN", "name": "First Trust NASDAQ Clean Edge","category": "Thematic",   "region": "US"},
+    {"symbol": "TAN",  "name": "Invesco Solar",              "category": "Thematic",     "region": "Global"},
+    {"symbol": "FAN",  "name": "First Trust Global Wind",    "category": "Thematic",     "region": "Global"},
+
+    # ── Thematic: AI & Semiconductors ────────────────────────────────────────
+    {"symbol": "SOXX", "name": "iShares Semiconductor",      "category": "Thematic",     "region": "US"},
+    {"symbol": "SMH",  "name": "VanEck Semiconductor",       "category": "Thematic",     "region": "US"},
+    {"symbol": "AIQ",  "name": "Global X AI & Technology",   "category": "Thematic",     "region": "Global"},
+    {"symbol": "ARKK", "name": "ARK Innovation",             "category": "Thematic",     "region": "US"},
+    {"symbol": "BOTZ", "name": "Global X Robotics & AI",     "category": "Thematic",     "region": "Global"},
+
+    # ── International / Regional ─────────────────────────────────────────────
+    {"symbol": "EWU",  "name": "iShares MSCI UK",            "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "EWG",  "name": "iShares MSCI Germany",       "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "EWQ",  "name": "iShares MSCI France",        "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "EWI",  "name": "iShares MSCI Italy",         "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "EWP",  "name": "iShares MSCI Spain",         "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "VGK",  "name": "Vanguard FTSE Europe",       "category": "Intl Equity",  "region": "Europe"},
+    {"symbol": "EWJ",  "name": "iShares MSCI Japan",         "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "EWA",  "name": "iShares MSCI Australia",     "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "EWC",  "name": "iShares MSCI Canada",        "category": "Intl Equity",  "region": "Americas"},
+    {"symbol": "EWT",  "name": "iShares MSCI Taiwan",        "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "EWY",  "name": "iShares MSCI South Korea",   "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "EWS",  "name": "iShares MSCI Singapore",     "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "INDA", "name": "iShares MSCI India",         "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "MCHI", "name": "iShares MSCI China",         "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "FXI",  "name": "iShares China Large-Cap",    "category": "Intl Equity",  "region": "Asia"},
+    {"symbol": "EWZ",  "name": "iShares MSCI Brazil",        "category": "Intl Equity",  "region": "EM"},
+    {"symbol": "EEM",  "name": "iShares MSCI EM",            "category": "Intl Equity",  "region": "EM"},
+    {"symbol": "VWO",  "name": "Vanguard FTSE EM",           "category": "Intl Equity",  "region": "EM"},
+
+    # ── Fixed Income ─────────────────────────────────────────────────────────
+    {"symbol": "TLT",  "name": "iShares 20+ Yr Treasury",   "category": "Fixed Income", "region": "US"},
+    {"symbol": "IEF",  "name": "iShares 7-10 Yr Treasury",  "category": "Fixed Income", "region": "US"},
+    {"symbol": "SHY",  "name": "iShares 1-3 Yr Treasury",   "category": "Fixed Income", "region": "US"},
+    {"symbol": "GOVT", "name": "iShares US Treasury Bond",   "category": "Fixed Income", "region": "US"},
+    {"symbol": "BND",  "name": "Vanguard Total Bond Market", "category": "Fixed Income", "region": "US"},
+    {"symbol": "BNDX", "name": "Vanguard Total Intl Bond",   "category": "Fixed Income", "region": "Global"},
+    {"symbol": "LQD",  "name": "iShares IG Corp Bond",       "category": "Fixed Income", "region": "US"},
+    {"symbol": "HYG",  "name": "iShares High Yield Bond",    "category": "Fixed Income", "region": "US"},
+    {"symbol": "JNK",  "name": "SPDR High Yield Bond",       "category": "Fixed Income", "region": "US"},
+    {"symbol": "EMB",  "name": "iShares EM Bond",            "category": "Fixed Income", "region": "EM"},
+    {"symbol": "TIP",  "name": "iShares TIPS Bond",          "category": "Fixed Income", "region": "US"},
+    {"symbol": "VTIP", "name": "Vanguard Short-Term TIPS",   "category": "Fixed Income", "region": "US"},
+
+    # ── Commodities ──────────────────────────────────────────────────────────
+    {"symbol": "GLD",  "name": "SPDR Gold Shares",           "category": "Commodity",    "region": "Global"},
+    {"symbol": "IAU",  "name": "iShares Gold Trust",         "category": "Commodity",    "region": "Global"},
+    {"symbol": "SLV",  "name": "iShares Silver Trust",       "category": "Commodity",    "region": "Global"},
+    {"symbol": "USO",  "name": "United States Oil Fund",     "category": "Commodity",    "region": "Global"},
+    {"symbol": "DBC",  "name": "Invesco DB Commodity",       "category": "Commodity",    "region": "Global"},
+    {"symbol": "DBA",  "name": "Invesco DB Agriculture",     "category": "Commodity",    "region": "Global"},
+    {"symbol": "PDBC", "name": "Invesco Optimum Yield Cmdty","category": "Commodity",    "region": "Global"},
+    {"symbol": "CPER", "name": "United States Copper Index", "category": "Commodity",    "region": "Global"},
+    {"symbol": "WEAT", "name": "Teucrium Wheat Fund",        "category": "Commodity",    "region": "Global"},
+    {"symbol": "CORN", "name": "Teucrium Corn Fund",         "category": "Commodity",    "region": "Global"},
+
+    # ── Real Estate ──────────────────────────────────────────────────────────
+    {"symbol": "VNQ",  "name": "Vanguard Real Estate",       "category": "Real Estate",  "region": "US"},
+    {"symbol": "IYR",  "name": "iShares US Real Estate",     "category": "Real Estate",  "region": "US"},
+    {"symbol": "VNQI", "name": "Vanguard Global ex-US REIT", "category": "Real Estate",  "region": "Global"},
+
+    # ── Macro / Currency / Volatility ────────────────────────────────────────
+    {"symbol": "UUP",  "name": "Invesco DB US Dollar",       "category": "Currency",     "region": "Global"},
+    {"symbol": "FXE",  "name": "Invesco CurrencyShares Euro","category": "Currency",     "region": "Europe"},
+    {"symbol": "FXY",  "name": "Invesco CurrencyShares Yen", "category": "Currency",     "region": "Asia"},
+    {"symbol": "VIXY", "name": "ProShares VIX Short-Term",   "category": "Volatility",   "region": "US"},
+    {"symbol": "SVXY", "name": "ProShares Short VIX",        "category": "Volatility",   "region": "US"},
 ]
 
 # Remove duplicates while preserving order
@@ -82,7 +142,7 @@ for e in ETF_UNIVERSE:
         ETF_UNIVERSE_DEDUP.append(e)
 ETF_UNIVERSE = ETF_UNIVERSE_DEDUP
 
-INTERMARKET_ANCHORS = ["SPY", "TLT", "GLD", "USO", "UUP", "EEM", "HYG"]
+INTERMARKET_ANCHORS = ["SPY", "TLT", "GLD", "USO", "UUP", "EEM", "HYG", "URA", "SOXX", "ITA"]
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -140,15 +200,23 @@ def compute_metrics(prices: pd.Series) -> dict:
     drawdown = (prices - roll_max) / roll_max * 100
     max_dd   = safe(drawdown.min())
 
+    # 52-week high/low proximity
+    high_52w = safe(prices.rolling(252, min_periods=1).max().iloc[-1])
+    low_52w  = safe(prices.rolling(252, min_periods=1).min().iloc[-1])
+    pct_from_high = safe((prices.iloc[-1] / prices.rolling(252, min_periods=1).max().iloc[-1] - 1) * 100)
+
     return {
-        "return1m":    ret_1m,
-        "return3m":    ret_3m,
-        "return6m":    ret_6m,
-        "return12m":   ret_12m,
-        "returnYTD":   ret_ytd,
-        "volatility":  ann_vol,
-        "sharpe":      sharpe,
-        "maxDrawdown": max_dd,
+        "return1m":     ret_1m,
+        "return3m":     ret_3m,
+        "return6m":     ret_6m,
+        "return12m":    ret_12m,
+        "returnYTD":    ret_ytd,
+        "volatility":   ann_vol,
+        "sharpe":       sharpe,
+        "maxDrawdown":  max_dd,
+        "high52w":      high_52w,
+        "low52w":       low_52w,
+        "pctFromHigh":  pct_from_high,
     }
 
 
@@ -189,7 +257,7 @@ def compute_implied_flows(price_data: dict) -> dict:
     """
     flows = {}
     symbols = list(price_data.keys())
-    print(f"  Fetching AUM/info for {len(symbols)} ETFs (this may take ~60s)…")
+    print(f"  Fetching AUM/info for {len(symbols)} ETFs (this may take ~90s)…")
 
     for sym in symbols:
         try:
@@ -269,6 +337,55 @@ def compute_intermarket_correlations(price_data: dict) -> dict:
     return result
 
 
+# ── Full Correlation Matrix (for Connections tab) ─────────────────────────────
+def compute_full_correlation_matrix(price_data: dict, window: int = 60) -> dict:
+    """
+    Returns pairwise correlations for all ETFs over the last `window` trading days.
+    Output: {symA: {symB: corr, ...}, ...}
+    """
+    symbols = list(price_data.keys())
+    # Build returns matrix
+    ret_frames = {}
+    for sym in symbols:
+        s = price_data[sym].pct_change().dropna()
+        if len(s) >= window:
+            ret_frames[sym] = s.iloc[-window:]
+
+    if not ret_frames:
+        return {}
+
+    df = pd.DataFrame(ret_frames).dropna(axis=1, thresh=window // 2)
+    corr_matrix = df.corr()
+
+    result = {}
+    for sym_a in corr_matrix.index:
+        result[sym_a] = {}
+        for sym_b in corr_matrix.columns:
+            if sym_a != sym_b:
+                v = corr_matrix.loc[sym_a, sym_b]
+                result[sym_a][sym_b] = safe(v, 3)
+    return result
+
+
+# ── Category RS Rankings ──────────────────────────────────────────────────────
+def compute_category_summary(etf_list: list) -> list:
+    """Aggregate RS score by category — useful for the summary banner."""
+    from collections import defaultdict
+    cat_scores = defaultdict(list)
+    for etf in etf_list:
+        if etf.get("rsScore") is not None:
+            cat_scores[etf["category"]].append(etf["rsScore"])
+    summary = []
+    for cat, scores in cat_scores.items():
+        summary.append({
+            "category": cat,
+            "avgRS": round(sum(scores) / len(scores), 1),
+            "count": len(scores),
+        })
+    summary.sort(key=lambda x: x["avgRS"], reverse=True)
+    return summary
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 def fetch_all() -> dict:
     symbols = [e["symbol"] for e in ETF_UNIVERSE]
@@ -337,12 +454,21 @@ def fetch_all() -> dict:
     print("Computing intermarket correlations…")
     correlations = compute_intermarket_correlations(price_data)
 
+    print("Computing full correlation matrix (60d)…")
+    full_corr = compute_full_correlation_matrix(price_data, window=60)
+
+    print("Computing category summary…")
+    cat_summary = compute_category_summary(etf_list)
+
     output = {
-        "updatedAt":   datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "etfs":        etf_list,
-        "intermarket": correlations,
-        "anchors":     INTERMARKET_ANCHORS,
-        "flowNote":    "Flows are implied: ΔAUM adjusted for price return. Values in USD millions. Positive = inflows, Negative = outflows.",
+        "updatedAt":     datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "etfs":          etf_list,
+        "intermarket":   correlations,
+        "fullCorr":      full_corr,
+        "anchors":       INTERMARKET_ANCHORS,
+        "categorySummary": cat_summary,
+        "flowNote":      "Flows are implied: ΔAUM adjusted for price return. Values in USD millions. Positive = inflows, Negative = outflows.",
+        "corrNote":      "Full correlation matrix computed on last 60 trading days of daily returns.",
     }
     return output
 
