@@ -59,7 +59,7 @@
   /* PERIOD SELECTOR (heatmap) */
   #period-bar { display:flex; gap:4px; padding:8px 20px; background:var(--bg);
                 border-bottom:1px solid var(--border); align-items:center; flex-wrap:wrap;
-                position:sticky; z-index:90; }
+                position:sticky; top:0; z-index:90; }
   #period-bar .label { font-size:11px; color:var(--muted); margin-right:6px; }
   .period-btn { background:none; border:1px solid var(--border); color:var(--muted);
                 padding:3px 10px; border-radius:5px; cursor:pointer; font-size:11px; font-weight:600; transition:all .15s; }
@@ -69,12 +69,12 @@
                 padding:3px 9px; border-radius:5px; cursor:pointer; font-size:11px; transition:all .15s; }
   .metric-btn.active, .metric-btn:hover { background:#2a2a3a; border-color:#7c5cbb; color:#bc8cff; }
 
-  /* SCREENS */
-  .screen { display:none; padding:20px; }
-  .screen.active { display:block; }
+  /* SCREENS — each screen is its own scroll container so thead sticks at top:0 inside it */
+  .screen { display:none; }
+  .screen.active { display:block; height:calc(100vh - var(--sticky-h, 100px)); overflow-y:auto; overflow-x:hidden; }
 
   /* HEATMAP */
-  #heatmap-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(115px,1fr)); gap:6px; }
+  #heatmap-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(115px,1fr)); gap:6px; padding:20px; }
   .heat-cell { border-radius:var(--radius); padding:10px 8px; cursor:pointer;
                transition:transform .1s, box-shadow .1s; text-align:center;
                border:1px solid rgba(255,255,255,.06); }
@@ -90,7 +90,7 @@
   /* RS TABLE */
   .table-wrap { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; }
-  thead { position:sticky; top:var(--thead-top, 0px); z-index:10; }
+  thead { position:sticky; top:0; z-index:10; }
   th { background:var(--surface); padding:7px 9px; text-align:right; color:var(--muted);
        font-size:11px; font-weight:600; cursor:pointer; user-select:none;
        border-bottom:1px solid var(--border); white-space:nowrap; }
@@ -257,6 +257,7 @@
 
 <!-- RS TABLE SCREEN -->
 <div id="screen-rs" class="screen">
+  <div style="padding:0 0 20px">
   <div class="table-wrap">
     <table id="rs-table">
       <thead>
@@ -284,10 +285,12 @@
       <tbody id="rs-body"></tbody>
     </table>
   </div>
+  </div>
 </div>
 
 <!-- FLOWS SCREEN -->
 <div id="screen-flows" class="screen">
+  <div style="padding:20px 20px 0">
   <div class="note-box">
     ⚠ Flows are <b>implied</b>: ΔAUM adjusted for price return. Positive = inflows, Negative = outflows. Values in USD millions.
   </div>
@@ -296,6 +299,7 @@
     <button class="period-btn" onclick="setFlowPeriod('flowYTD',this)">YTD</button>
     <button class="period-btn active" onclick="setFlowPeriod('flow1m',this)">1M</button>
     <button class="period-btn" onclick="setFlowPeriod('flow3m',this)">3M</button>
+  </div>
   </div>
   <div class="table-wrap">
     <table id="flows-table">
@@ -316,16 +320,20 @@
 
 <!-- DRILL DOWN SCREEN -->
 <div id="screen-drill" class="screen">
+  <div style="padding:20px">
   <div id="drill-header">
     <button class="back-btn" onclick="goBack()">← Back</button>
     <h2 id="drill-title">—</h2>
   </div>
   <div class="drill-grid" id="drill-content"></div>
+  </div>
 </div>
 
 <!-- INTERMARKET SCREEN -->
 <div id="screen-intermarket" class="screen">
+  <div style="padding:20px 20px 0">
   <p class="section-title">30-day rolling correlation vs anchor assets — click row to open drill-down</p>
+  </div>
   <div id="corr-table-wrap">
     <div class="loading"><span class="spinner"></span>Loading…</div>
   </div>
@@ -333,6 +341,7 @@
 
 <!-- CONNECTIONS SCREEN -->
 <div id="screen-connections" class="screen">
+  <div style="padding:20px 20px 0">
   <div id="connections-controls">
     <span class="label">Window:</span>
     <button class="conn-btn active" data-group="window" onclick="setConnWindow(60,this)">60d</button>
@@ -348,7 +357,8 @@
     <button class="conn-btn" data-group="view" onclick="setConnView('leaders',this)">Leaders</button>
   </div>
   <div id="conn-summary" class="conn-summary"></div>
-  <div id="conn-content">
+  </div>
+  <div id="conn-content" style="padding:0 20px 20px">
     <div class="loading"><span class="spinner"></span>Loading…</div>
   </div>
 </div>
@@ -459,8 +469,8 @@ function renderVrmBanner() {
     const diffDays = (Date.now() - updated.getTime()) / 86400000;
     staleEl.style.display = diffDays > 10 ? 'inline' : 'none';
   }
-  // Banner changed height → recalculate sticky offsets
-  requestAnimationFrame(updateStickyOffsets);
+  // Banner changed height → recalculate screen heights
+  requestAnimationFrame(setStickyH);
 }
 
 // ── Filter ────────────────────────────────────────────────────────────────────
@@ -488,17 +498,14 @@ function applyFilters() {
   renderConnections();   // Connections always re-renders — it reads activeFilter internally
 }
 
-// ── Sticky offset calculator ─────────────────────────────────────────────────
-function updateStickyOffsets() {
-  const stickyH = document.getElementById('sticky-header').offsetHeight;
-  // period-bar lives inside screen-heatmap; when that screen is hidden offsetHeight==0
-  // We want thead to stick just below the sticky-header (not below period-bar,
-  // because period-bar scrolls with the heatmap content on that screen).
-  document.documentElement.style.setProperty('--thead-top', stickyH + 'px');
-  // Keep period-bar itself correctly positioned below sticky-header
-  const periodBar = document.getElementById('period-bar');
-  if (periodBar) periodBar.style.top = stickyH + 'px';
+// ── Sticky header height tracker ─────────────────────────────────────────────
+// Screens use height:calc(100vh - var(--sticky-h)) so they scroll independently.
+// thead has top:0 — sticks at the top of each screen's own scroll container.
+function setStickyH() {
+  const h = document.getElementById('sticky-header').getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--sticky-h', h + 'px');
 }
+function updateStickyOffsets() { setStickyH(); } // kept for compatibility
 
 // ── Screens ───────────────────────────────────────────────────────────────────
 function showScreen(name) {
@@ -508,7 +515,6 @@ function showScreen(name) {
   const btn = document.getElementById('btn-' + name);
   if (btn) btn.classList.add('active');
   if (name !== 'drill') previousScreen = name;
-  requestAnimationFrame(updateStickyOffsets);
 }
 function goBack() { showScreen(previousScreen); }
 
@@ -1059,8 +1065,13 @@ function renderConnectionLeaders(syms, el, summaryEl, FULL_CORR) {
 // ── Init ──────────────────────────────────────────────────────────────────────
 loadData();
 loadVrmState();
-window.addEventListener('resize', updateStickyOffsets);
-requestAnimationFrame(updateStickyOffsets);
+setStickyH();
+// Watch sticky-header for ANY height change (banner appearing, window resize, font load…)
+if (window.ResizeObserver) {
+  new ResizeObserver(setStickyH).observe(document.getElementById('sticky-header'));
+} else {
+  window.addEventListener('resize', setStickyH);
+}
 </script>
 </body>
 </html>
