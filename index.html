@@ -335,17 +335,17 @@
 <div id="screen-connections" class="screen">
   <div id="connections-controls">
     <span class="label">Window:</span>
-    <button class="conn-btn active" onclick="setConnWindow(60,this)">60d</button>
-    <button class="conn-btn" onclick="setConnWindow(30,this)">30d</button>
+    <button class="conn-btn active" data-group="window" onclick="setConnWindow(60,this)">60d</button>
+    <button class="conn-btn" data-group="window" onclick="setConnWindow(30,this)">30d</button>
     <span class="filter-sep"></span>
     <span class="label">Threshold:</span>
-    <button class="conn-btn" onclick="setConnThreshold(0.7,this)">Strong (≥0.7)</button>
-    <button class="conn-btn active" onclick="setConnThreshold(0.5,this)">Moderate (≥0.5)</button>
-    <button class="conn-btn" onclick="setConnThreshold(0,this)">All</button>
+    <button class="conn-btn" data-group="threshold" onclick="setConnThreshold(0.7,this)">Strong (≥0.7)</button>
+    <button class="conn-btn active" data-group="threshold" onclick="setConnThreshold(0.5,this)">Moderate (≥0.5)</button>
+    <button class="conn-btn" data-group="threshold" onclick="setConnThreshold(0,this)">All</button>
     <span class="filter-sep"></span>
     <span class="label">View:</span>
-    <button class="conn-btn active" onclick="setConnView('matrix',this)">Matrix</button>
-    <button class="conn-btn" onclick="setConnView('leaders',this)">Leaders</button>
+    <button class="conn-btn active" data-group="view" onclick="setConnView('matrix',this)">Matrix</button>
+    <button class="conn-btn" data-group="view" onclick="setConnView('leaders',this)">Leaders</button>
   </div>
   <div id="conn-summary" class="conn-summary"></div>
   <div id="conn-content">
@@ -357,7 +357,8 @@
 // ── State ─────────────────────────────────────────────────────────────────────
 let ALL_DATA     = [];
 let CORR_DATA    = {};
-let FULL_CORR    = {};
+let FULL_CORR_60 = {};
+let FULL_CORR_30 = {};
 let ANCHORS      = [];
 let FLOW_NOTE    = '';
 let CAT_SUMMARY  = [];
@@ -381,12 +382,13 @@ async function loadData() {
     const resp = await fetch('data/etfs.json?t=' + Date.now());
     if (!resp.ok) throw new Error('data/etfs.json not found');
     const json = await resp.json();
-    ALL_DATA    = json.etfs || [];
-    CORR_DATA   = json.intermarket || {};
-    FULL_CORR   = json.fullCorr || {};
-    ANCHORS     = json.anchors || [];
-    FLOW_NOTE   = json.flowNote || '';
-    CAT_SUMMARY = json.categorySummary || [];
+    ALL_DATA     = json.etfs || [];
+    CORR_DATA    = json.intermarket || {};
+    FULL_CORR_60 = json.fullCorr60 || json.fullCorr || {};
+    FULL_CORR_30 = json.fullCorr30 || {};
+    ANCHORS      = json.anchors || [];
+    FLOW_NOTE    = json.flowNote || '';
+    CAT_SUMMARY  = json.categorySummary || [];
 
     if (json.updatedAt) {
       const d = new Date(json.updatedAt);
@@ -457,6 +459,8 @@ function renderVrmBanner() {
     const diffDays = (Date.now() - updated.getTime()) / 86400000;
     staleEl.style.display = diffDays > 10 ? 'inline' : 'none';
   }
+  // Banner changed height → recalculate sticky offsets
+  requestAnimationFrame(updateStickyOffsets);
 }
 
 // ── Filter ────────────────────────────────────────────────────────────────────
@@ -481,15 +485,18 @@ function applyFilters() {
   renderHeatmap(data);
   renderRS(data);
   renderFlows(data);
+  renderConnections();   // Connections always re-renders — it reads activeFilter internally
 }
 
 // ── Sticky offset calculator ─────────────────────────────────────────────────
 function updateStickyOffsets() {
   const stickyH = document.getElementById('sticky-header').offsetHeight;
+  // period-bar lives inside screen-heatmap; when that screen is hidden offsetHeight==0
+  // We want thead to stick just below the sticky-header (not below period-bar,
+  // because period-bar scrolls with the heatmap content on that screen).
+  document.documentElement.style.setProperty('--thead-top', stickyH + 'px');
+  // Keep period-bar itself correctly positioned below sticky-header
   const periodBar = document.getElementById('period-bar');
-  const periodH   = (periodBar && periodBar.offsetParent !== null) ? periodBar.offsetHeight : 0;
-  const theadTop  = stickyH + periodH;
-  document.documentElement.style.setProperty('--thead-top', theadTop + 'px');
   if (periodBar) periodBar.style.top = stickyH + 'px';
 }
 
@@ -532,29 +539,25 @@ function setFlowPeriod(key, btn) {
 }
 
 // ── Connections controls ──────────────────────────────────────────────────────
+function connActivate(btn) {
+  const group = btn.getAttribute('data-group');
+  document.querySelectorAll(`#connections-controls [data-group="${group}"]`)
+    .forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
 function setConnWindow(w, btn) {
   connWindow = w;
-  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
-    if (b.textContent.includes('d')) b.classList.remove('active');
-  });
-  btn.classList.add('active');
+  connActivate(btn);
   renderConnections();
 }
 function setConnThreshold(t, btn) {
   connThreshold = t;
-  // Only toggle threshold buttons (those with ≥ in text)
-  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
-    if (b.textContent.includes('≥') || b.textContent === 'All') b.classList.remove('active');
-  });
-  btn.classList.add('active');
+  connActivate(btn);
   renderConnections();
 }
 function setConnView(v, btn) {
   connView = v;
-  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
-    if (b.textContent === 'Matrix' || b.textContent === 'Leaders') b.classList.remove('active');
-  });
-  btn.classList.add('active');
+  connActivate(btn);
   renderConnections();
 }
 
@@ -923,12 +926,18 @@ function renderConnections() {
   const el = document.getElementById('conn-content');
   const summaryEl = document.getElementById('conn-summary');
 
+  // Choose the right correlation dataset based on selected window
+  const FULL_CORR = connWindow === 30 && Object.keys(FULL_CORR_30).length
+    ? FULL_CORR_30
+    : FULL_CORR_60;
+
   if (!Object.keys(FULL_CORR).length) {
     el.innerHTML = '<div class="loading" style="color:var(--muted)">Run fetch_data.py to generate correlation matrix.</div>';
+    summaryEl.innerHTML = '';
     return;
   }
 
-  // Build list of symbols present in fullCorr, filtered by activeFilter
+  // Build list of symbols present in the selected fullCorr, filtered by activeFilter
   const allSyms = ALL_DATA.map(e => e.symbol).filter(s => FULL_CORR[s]);
   const filteredSyms = activeFilter === 'all'
     ? allSyms
@@ -943,13 +952,13 @@ function renderConnections() {
   }
 
   if (connView === 'leaders') {
-    renderConnectionLeaders(filteredSyms, el, summaryEl);
+    renderConnectionLeaders(filteredSyms, el, summaryEl, FULL_CORR);
   } else {
-    renderConnectionMatrix(filteredSyms, el, summaryEl);
+    renderConnectionMatrix(filteredSyms, el, summaryEl, FULL_CORR);
   }
 }
 
-function renderConnectionMatrix(syms, el, summaryEl) {
+function renderConnectionMatrix(syms, el, summaryEl, FULL_CORR) {
   // Summary stats
   let countHi = 0, countNeg = 0, totalPairs = 0;
   syms.forEach((a, i) => {
@@ -1003,7 +1012,7 @@ function renderConnectionMatrix(syms, el, summaryEl) {
   el.innerHTML = html;
 }
 
-function renderConnectionLeaders(syms, el, summaryEl) {
+function renderConnectionLeaders(syms, el, summaryEl, FULL_CORR) {
   // For each ETF, find its top positive and top negative correlations within the filtered set
   const rows = syms.map(sym => {
     const corrs = syms
