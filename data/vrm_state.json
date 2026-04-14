@@ -1,0 +1,32 @@
+{
+  "_note": "Update this file weekly after running the VRM model. Commit to GitHub to update the public dashboard.",
+  "updatedAt": "2026-04-14",
+  "regime": "GROWTH",
+  "regimeStrength": "moderate",
+  "killSwitch": {
+    "active": true,
+    "activatedAt": "2026-03-28",
+    "variant": "A",
+    "variantLabel": "Standard Protection (TLT/GLD/IEF)",
+    "portfolio": {
+      "TLT": 0.60,
+      "GLD": 0.30,
+      "IEF": 0.10
+    },
+    "notes": "Switched from Variant B (inflation) to Variant A (duration) on 2026-04-14"
+  },
+  "alignment": {
+    "score": 4,
+    "outOf": 8,
+    "label": "Умерен консенсус"
+  },
+  "regimeHistory": [
+    {"date": "2025-10-01", "regime": "REFLATION"},
+    {"date": "2025-12-15", "regime": "GROWTH"},
+    {"date": "2026-03-28", "regime": "GROWTH", "ksActivated": true}
+  ],
+  "watchlist": ["TLT", "GLD", "UUP", "TIP"],
+  "topLeaders": ["GLD", "IAU", "TLT"],
+  "topLaggards": ["XLK", "QQQ", "ARKK"],
+  "narrativeLine": "Режимът е GROWTH, но Kill Switch е активен. Портфейлите са в защитен режим Вар.А (облигации + злато). Мониторинг до деактивиране."
+}
