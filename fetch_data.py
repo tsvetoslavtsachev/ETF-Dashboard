@@ -454,8 +454,9 @@ def fetch_all() -> dict:
     print("Computing intermarket correlations…")
     correlations = compute_intermarket_correlations(price_data)
 
-    print("Computing full correlation matrix (60d)…")
-    full_corr = compute_full_correlation_matrix(price_data, window=60)
+    print("Computing full correlation matrices (30d + 60d)…")
+    full_corr_60 = compute_full_correlation_matrix(price_data, window=60)
+    full_corr_30 = compute_full_correlation_matrix(price_data, window=30)
 
     print("Computing category summary…")
     cat_summary = compute_category_summary(etf_list)
@@ -464,7 +465,8 @@ def fetch_all() -> dict:
         "updatedAt":     datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "etfs":          etf_list,
         "intermarket":   correlations,
-        "fullCorr":      full_corr,
+        "fullCorr60":    full_corr_60,
+        "fullCorr30":    full_corr_30,
         "anchors":       INTERMARKET_ANCHORS,
         "categorySummary": cat_summary,
         "flowNote":      "Flows are implied: ΔAUM adjusted for price return. Values in USD millions. Positive = inflows, Negative = outflows.",
