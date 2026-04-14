@@ -28,6 +28,26 @@
                 padding:5px 10px; border-radius:6px; font-size:12px; width:160px; outline:none; }
   #search-box:focus { border-color:var(--accent); }
 
+  /* VRM REGIME BANNER */
+  #vrm-banner { display:none; gap:12px; padding:8px 20px; align-items:center; flex-wrap:wrap;
+                background:#0d1f12; border-bottom:1px solid #1f3a20; font-size:11px; }
+  #vrm-banner.visible { display:flex; }
+  #vrm-banner .vrm-label { color:var(--muted); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+  #vrm-regime-badge { padding:3px 10px; border-radius:12px; font-weight:700; font-size:11px;
+                      background:#1a3d28; color:#3fb950; border:1px solid #2a5a38; }
+  #vrm-regime-badge.stag { background:#3a2a00; color:#d29922; border-color:#5a4500; }
+  #vrm-regime-badge.crisis { background:#3a1a1a; color:#f85149; border-color:#5a2828; }
+  #vrm-regime-badge.deflation { background:#1a1a3a; color:#79b8ff; border-color:#2a2a5a; }
+  .vrm-ks-chip { padding:3px 8px; border-radius:12px; font-weight:700; font-size:10px;
+                 background:#3a1a00; color:#f0883e; border:1px solid #5a3000; }
+  .vrm-ks-chip.inactive { background:#1c1c1c; color:var(--muted); border-color:var(--border); }
+  .vrm-align { color:var(--muted); }
+  .vrm-align b { color:var(--text); }
+  .vrm-sep { width:1px; height:16px; background:var(--border); }
+  .vrm-narrative { color:#8b949e; font-style:italic; flex:1; min-width:0;
+                   overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .vrm-stale { color:var(--red); font-size:10px; }
+
   /* FILTER BAR */
   #filter-bar { display:flex; gap:6px; padding:8px 20px; background:var(--surface);
                 border-bottom:1px solid var(--border); flex-wrap:wrap; align-items:center; }
@@ -82,13 +102,16 @@
   td:first-child, td:nth-child(2), td:nth-child(3) { text-align:left; }
   tr:hover td { background:rgba(88,166,255,.04); cursor:pointer; }
   .badge { display:inline-block; padding:1px 6px; border-radius:4px; font-size:10px; font-weight:600; }
-  .badge-sector    { background:#1f3a5f; color:#79b8ff; }
-  .badge-us        { background:#1a3a2a; color:#56d364; }
-  .badge-intl      { background:#3a2a1a; color:#f0883e; }
-  .badge-fi        { background:#2a1a3a; color:#bc8cff; }
-  .badge-commodity { background:#3a2a00; color:#e3b341; }
-  .badge-re        { background:#1a2a3a; color:#58a6ff; }
-  .badge-currency  { background:#1a2a2a; color:#39d353; }
+  .badge-sector     { background:#1f3a5f; color:#79b8ff; }
+  .badge-us         { background:#1a3a2a; color:#56d364; }
+  .badge-intl       { background:#3a2a1a; color:#f0883e; }
+  .badge-fi         { background:#2a1a3a; color:#bc8cff; }
+  .badge-commodity  { background:#3a2a00; color:#e3b341; }
+  .badge-re         { background:#1a2a3a; color:#58a6ff; }
+  .badge-currency   { background:#1a2a2a; color:#39d353; }
+  .badge-thematic   { background:#3a1a3a; color:#d2a8ff; }
+  .badge-factor     { background:#1a2a3a; color:#79c0ff; }
+  .badge-volatility { background:#3a1a1a; color:#ff7b72; }
 
   /* RS bar */
   .rs-bar-wrap { display:flex; align-items:center; gap:5px; justify-content:flex-end; }
@@ -125,6 +148,36 @@
   #flows-period-bar { display:flex; gap:4px; margin-bottom:14px; align-items:center; }
   #flows-period-bar .label { font-size:11px; color:var(--muted); margin-right:6px; }
 
+  /* CONNECTIONS SCREEN */
+  #connections-controls { display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap; }
+  #connections-controls .label { font-size:11px; color:var(--muted); }
+  .conn-btn { background:none; border:1px solid var(--border); color:var(--muted);
+              padding:4px 10px; border-radius:5px; cursor:pointer; font-size:11px; transition:all .15s; }
+  .conn-btn.active, .conn-btn:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
+  #conn-matrix-wrap { overflow:auto; max-height:75vh; }
+  #conn-matrix { border-collapse:collapse; font-size:10px; }
+  #conn-matrix th { background:var(--surface); padding:4px 6px; text-align:center;
+                    color:var(--muted); border:1px solid var(--border); white-space:nowrap;
+                    position:sticky; top:0; z-index:5; cursor:pointer; font-size:9px; }
+  #conn-matrix th:first-child { position:sticky; left:0; z-index:10; text-align:left;
+                                 padding:4px 8px; }
+  #conn-matrix td { padding:3px 5px; border:1px solid #1c2128; text-align:center;
+                    font-size:10px; font-weight:600; white-space:nowrap; }
+  #conn-matrix td:first-child { position:sticky; left:0; background:var(--surface);
+                                  text-align:left; padding:3px 8px; font-weight:700;
+                                  border-right:1px solid var(--border); z-index:2; }
+  .corr-hi  { background:#0d3320; color:#3fb950; }
+  .corr-mhi { background:#1a3d28; color:#56d364; }
+  .corr-neu { background:#1c1c1c; color:#8b949e; }
+  .corr-mlo { background:#3a2020; color:#f0883e; }
+  .corr-lo  { background:#4a1a1a; color:#f85149; }
+  .corr-self { background:#1a1a2a; color:#58a6ff; }
+  .conn-summary { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+  .conn-stat { background:var(--surface); border:1px solid var(--border); border-radius:6px;
+               padding:8px 12px; font-size:11px; min-width:140px; }
+  .conn-stat .val { font-size:16px; font-weight:700; color:var(--accent); margin-top:2px; }
+  .conn-stat .lbl { color:var(--muted); font-size:10px; }
+
   /* UTIL */
   .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--muted); }
   .section-title { font-size:11px; color:var(--muted); text-transform:uppercase;
@@ -148,26 +201,44 @@
   <button id="btn-rs"                         onclick="showScreen('rs')">Relative Strength</button>
   <button id="btn-flows"                      onclick="showScreen('flows')">Flows</button>
   <button id="btn-intermarket"                onclick="showScreen('intermarket')">Intermarket</button>
+  <button id="btn-connections"                onclick="showScreen('connections')">Connections</button>
   <span class="spacer"></span>
   <input id="search-box" type="text" placeholder="Search ticker / name…" oninput="applyFilters()"/>
   <span id="last-update"></span>
 </nav>
+
+<!-- VRM REGIME BANNER -->
+<div id="vrm-banner">
+  <span class="vrm-label">VRM</span>
+  <span id="vrm-regime-badge">—</span>
+  <span class="vrm-sep"></span>
+  <span id="vrm-ks-chip" class="vrm-ks-chip inactive">KS OFF</span>
+  <span class="vrm-sep"></span>
+  <span class="vrm-align">Alignment: <b id="vrm-align-val">—</b></span>
+  <span class="vrm-sep"></span>
+  <span id="vrm-narrative" class="vrm-narrative"></span>
+  <span id="vrm-stale" class="vrm-stale" style="display:none">⚠ State outdated</span>
+</div>
+
 <!-- CATEGORY FILTER BAR -->
 <div id="filter-bar">
   <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
   <button class="filter-btn" onclick="setFilter('US Equity',this)">US Equity</button>
   <button class="filter-btn" onclick="setFilter('Sector',this)">Sectors</button>
+  <button class="filter-btn" onclick="setFilter('Factor',this)">Factors</button>
+  <button class="filter-btn" onclick="setFilter('Thematic',this)">Thematic</button>
+  <span class="filter-sep"></span>
   <button class="filter-btn" onclick="setFilter('Intl Equity',this)">International</button>
   <button class="filter-btn" onclick="setFilter('Fixed Income',this)">Fixed Income</button>
   <button class="filter-btn" onclick="setFilter('Commodity',this)">Commodities</button>
   <button class="filter-btn" onclick="setFilter('Real Estate',this)">Real Estate</button>
   <button class="filter-btn" onclick="setFilter('Currency',this)">Currency</button>
+  <button class="filter-btn" onclick="setFilter('Volatility',this)">Volatility</button>
 </div>
 </div><!-- end #sticky-header -->
 
 <!-- HEATMAP SCREEN -->
 <div id="screen-heatmap" class="screen active">
-  <!-- Period + metric selector -->
   <div id="period-bar">
     <span class="label">Period:</span>
     <button class="period-btn" onclick="setHeatPeriod('returnYTD',this)">YTD</button>
@@ -190,23 +261,24 @@
     <table id="rs-table">
       <thead>
         <tr>
-          <th onclick="sortTable('symbol')"     >Ticker <span class="arr">↕</span></th>
-          <th onclick="sortTable('name')"       >Name <span class="arr">↕</span></th>
-          <th onclick="sortTable('category')"   >Cat <span class="arr">↕</span></th>
-          <th onclick="sortTable('price')"      >Price <span class="arr">↕</span></th>
-          <th onclick="sortTable('returnYTD')"  >YTD% <span class="arr">↕</span></th>
-          <th onclick="sortTable('return1m')"   >1M% <span class="arr">↕</span></th>
-          <th onclick="sortTable('return3m')"   >3M% <span class="arr">↕</span></th>
-          <th onclick="sortTable('return6m')"   >6M% <span class="arr">↕</span></th>
-          <th onclick="sortTable('return12m')"  >12M% <span class="arr">↕</span></th>
-          <th onclick="sortTable('volatility')" >Vol% <span class="arr">↕</span></th>
-          <th onclick="sortTable('sharpe')"     >Sharpe <span class="arr">↕</span></th>
-          <th onclick="sortTable('maxDrawdown')">MaxDD <span class="arr">↕</span></th>
-          <th onclick="sortTable('rsScore')"    >RS <span class="arr">↕</span></th>
-          <th onclick="sortTable('aum')"        >AUM $M <span class="arr">↕</span></th>
-          <th onclick="sortTable('flow1m')"     >Flow 1M $M <span class="arr">↕</span></th>
-          <th onclick="sortTable('flow3m')"     >Flow 3M $M <span class="arr">↕</span></th>
-          <th onclick="sortTable('flowYTD')"    >Flow YTD $M <span class="arr">↕</span></th>
+          <th onclick="sortTable('symbol')"      >Ticker <span class="arr">↕</span></th>
+          <th onclick="sortTable('name')"        >Name <span class="arr">↕</span></th>
+          <th onclick="sortTable('category')"    >Cat <span class="arr">↕</span></th>
+          <th onclick="sortTable('price')"       >Price <span class="arr">↕</span></th>
+          <th onclick="sortTable('returnYTD')"   >YTD% <span class="arr">↕</span></th>
+          <th onclick="sortTable('return1m')"    >1M% <span class="arr">↕</span></th>
+          <th onclick="sortTable('return3m')"    >3M% <span class="arr">↕</span></th>
+          <th onclick="sortTable('return6m')"    >6M% <span class="arr">↕</span></th>
+          <th onclick="sortTable('return12m')"   >12M% <span class="arr">↕</span></th>
+          <th onclick="sortTable('pctFromHigh')" >vs 52wH <span class="arr">↕</span></th>
+          <th onclick="sortTable('volatility')"  >Vol% <span class="arr">↕</span></th>
+          <th onclick="sortTable('sharpe')"      >Sharpe <span class="arr">↕</span></th>
+          <th onclick="sortTable('maxDrawdown')" >MaxDD <span class="arr">↕</span></th>
+          <th onclick="sortTable('rsScore')"     >RS <span class="arr">↕</span></th>
+          <th onclick="sortTable('aum')"         >AUM $M <span class="arr">↕</span></th>
+          <th onclick="sortTable('flow1m')"      >Flow 1M $M <span class="arr">↕</span></th>
+          <th onclick="sortTable('flow3m')"      >Flow 3M $M <span class="arr">↕</span></th>
+          <th onclick="sortTable('flowYTD')"     >Flow YTD $M <span class="arr">↕</span></th>
         </tr>
       </thead>
       <tbody id="rs-body"></tbody>
@@ -259,21 +331,49 @@
   </div>
 </div>
 
+<!-- CONNECTIONS SCREEN -->
+<div id="screen-connections" class="screen">
+  <div id="connections-controls">
+    <span class="label">Window:</span>
+    <button class="conn-btn active" onclick="setConnWindow(60,this)">60d</button>
+    <button class="conn-btn" onclick="setConnWindow(30,this)">30d</button>
+    <span class="filter-sep"></span>
+    <span class="label">Threshold:</span>
+    <button class="conn-btn" onclick="setConnThreshold(0.7,this)">Strong (≥0.7)</button>
+    <button class="conn-btn active" onclick="setConnThreshold(0.5,this)">Moderate (≥0.5)</button>
+    <button class="conn-btn" onclick="setConnThreshold(0,this)">All</button>
+    <span class="filter-sep"></span>
+    <span class="label">View:</span>
+    <button class="conn-btn active" onclick="setConnView('matrix',this)">Matrix</button>
+    <button class="conn-btn" onclick="setConnView('leaders',this)">Leaders</button>
+  </div>
+  <div id="conn-summary" class="conn-summary"></div>
+  <div id="conn-content">
+    <div class="loading"><span class="spinner"></span>Loading…</div>
+  </div>
+</div>
+
 <script>
 // ── State ─────────────────────────────────────────────────────────────────────
-let ALL_DATA   = [];
-let CORR_DATA  = {};
-let ANCHORS    = [];
-let FLOW_NOTE  = '';
-let activeFilter   = 'all';
-let heatPeriod     = 'return1m';   // what the heatmap colours by (return key)
-let heatMetric     = 'return';     // 'return' | 'rsScore' | 'flow'
-let sortKey        = 'rsScore';
-let sortDir        = -1;
-let flowSortKey    = 'flow1m';
-let flowSortDir    = -1;
-let flowPeriod     = 'flow1m';
-let previousScreen = 'heatmap';
+let ALL_DATA     = [];
+let CORR_DATA    = {};
+let FULL_CORR    = {};
+let ANCHORS      = [];
+let FLOW_NOTE    = '';
+let CAT_SUMMARY  = [];
+let VRM_STATE    = null;
+let activeFilter     = 'all';
+let heatPeriod       = 'return1m';
+let heatMetric       = 'return';
+let sortKey          = 'rsScore';
+let sortDir          = -1;
+let flowSortKey      = 'flow1m';
+let flowSortDir      = -1;
+let flowPeriod       = 'flow1m';
+let previousScreen   = 'heatmap';
+let connWindow       = 60;    // 60 or 30 (days)
+let connThreshold    = 0.5;
+let connView         = 'matrix';
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 async function loadData() {
@@ -281,10 +381,12 @@ async function loadData() {
     const resp = await fetch('data/etfs.json?t=' + Date.now());
     if (!resp.ok) throw new Error('data/etfs.json not found');
     const json = await resp.json();
-    ALL_DATA  = json.etfs || [];
-    CORR_DATA = json.intermarket || {};
-    ANCHORS   = json.anchors || [];
-    FLOW_NOTE = json.flowNote || '';
+    ALL_DATA    = json.etfs || [];
+    CORR_DATA   = json.intermarket || {};
+    FULL_CORR   = json.fullCorr || {};
+    ANCHORS     = json.anchors || [];
+    FLOW_NOTE   = json.flowNote || '';
+    CAT_SUMMARY = json.categorySummary || [];
 
     if (json.updatedAt) {
       const d = new Date(json.updatedAt);
@@ -297,11 +399,63 @@ async function loadData() {
     applyFilters();
     renderIntermarket();
     renderFlows(filteredData());
+    renderConnections();
     requestAnimationFrame(updateStickyOffsets);
   } catch(e) {
     document.getElementById('heatmap-grid').innerHTML =
       '<div class="loading" style="color:var(--red)">⚠ Could not load data/etfs.json.<br>Run fetch_data.py to generate it.</div>';
     console.error(e);
+  }
+}
+
+async function loadVrmState() {
+  try {
+    const resp = await fetch('data/vrm_state.json?t=' + Date.now());
+    if (!resp.ok) return;
+    VRM_STATE = await resp.json();
+    renderVrmBanner();
+  } catch(e) { /* vrm_state.json optional */ }
+}
+
+// ── VRM Banner ────────────────────────────────────────────────────────────────
+function renderVrmBanner() {
+  if (!VRM_STATE) return;
+  const banner = document.getElementById('vrm-banner');
+  banner.classList.add('visible');
+
+  const regime = VRM_STATE.regime || '—';
+  const regimeBadge = document.getElementById('vrm-regime-badge');
+  regimeBadge.textContent = regime;
+  regimeBadge.className = 'vrm-regime-badge';
+  if (regime === 'STAGNATION' || regime === 'REFLATION') regimeBadge.classList.add('stag');
+  else if (regime === 'CRISIS') regimeBadge.classList.add('crisis');
+  else if (regime === 'DEFLATION') regimeBadge.classList.add('deflation');
+
+  const ks = VRM_STATE.killSwitch;
+  const ksChip = document.getElementById('vrm-ks-chip');
+  if (ks && ks.active) {
+    ksChip.textContent = `KS АКТИВЕН · Вар.${ks.variant || '?'}`;
+    ksChip.className = 'vrm-ks-chip';
+  } else {
+    ksChip.textContent = 'KS OFF';
+    ksChip.className = 'vrm-ks-chip inactive';
+  }
+
+  const align = VRM_STATE.alignment;
+  const alignEl = document.getElementById('vrm-align-val');
+  if (align) {
+    alignEl.textContent = `${align.score}/${align.outOf}`;
+  }
+
+  const narrativeEl = document.getElementById('vrm-narrative');
+  narrativeEl.textContent = VRM_STATE.narrativeLine || '';
+
+  // Stale check — warn if updatedAt > 10 days old
+  const staleEl = document.getElementById('vrm-stale');
+  if (VRM_STATE.updatedAt) {
+    const updated = new Date(VRM_STATE.updatedAt);
+    const diffDays = (Date.now() - updated.getTime()) / 86400000;
+    staleEl.style.display = diffDays > 10 ? 'inline' : 'none';
   }
 }
 
@@ -332,12 +486,10 @@ function applyFilters() {
 // ── Sticky offset calculator ─────────────────────────────────────────────────
 function updateStickyOffsets() {
   const stickyH = document.getElementById('sticky-header').offsetHeight;
-  // period-bar is inside heatmap screen — only visible when heatmap active
   const periodBar = document.getElementById('period-bar');
   const periodH   = (periodBar && periodBar.offsetParent !== null) ? periodBar.offsetHeight : 0;
   const theadTop  = stickyH + periodH;
   document.documentElement.style.setProperty('--thead-top', theadTop + 'px');
-  // give period-bar its correct sticky top
   if (periodBar) periodBar.style.top = stickyH + 'px';
 }
 
@@ -349,12 +501,11 @@ function showScreen(name) {
   const btn = document.getElementById('btn-' + name);
   if (btn) btn.classList.add('active');
   if (name !== 'drill') previousScreen = name;
-  // recalc after screen switch (period-bar visibility may change)
   requestAnimationFrame(updateStickyOffsets);
 }
 function goBack() { showScreen(previousScreen); }
 
-// ── Heatmap period & metric selectors ────────────────────────────────────────
+// ── Heatmap selectors ────────────────────────────────────────────────────────
 function setHeatPeriod(key, btn) {
   heatPeriod = key;
   document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
@@ -378,6 +529,33 @@ function setFlowPeriod(key, btn) {
   const hdr = document.getElementById('flow-col-hdr');
   if (hdr) hdr.innerHTML = (labels[key]||'Flow') + ' <span class="arr">↓</span>';
   renderFlows(filteredData());
+}
+
+// ── Connections controls ──────────────────────────────────────────────────────
+function setConnWindow(w, btn) {
+  connWindow = w;
+  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
+    if (b.textContent.includes('d')) b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderConnections();
+}
+function setConnThreshold(t, btn) {
+  connThreshold = t;
+  // Only toggle threshold buttons (those with ≥ in text)
+  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
+    if (b.textContent.includes('≥') || b.textContent === 'All') b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderConnections();
+}
+function setConnView(v, btn) {
+  connView = v;
+  document.querySelectorAll('#connections-controls .conn-btn').forEach(b => {
+    if (b.textContent === 'Matrix' || b.textContent === 'Leaders') b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderConnections();
 }
 
 // ── Colour helpers ────────────────────────────────────────────────────────────
@@ -428,13 +606,23 @@ function fmtFlow(v) {
   return `<span class="${cls}">${sign}${(+v).toFixed(0)}</span>`;
 }
 function fmtM(v) { return v == null ? '—' : (+v).toLocaleString('en-US', {maximumFractionDigits:0}); }
+
 function categoryBadge(cat) {
   const map = {
-    'US Equity':'badge-us','Sector':'badge-sector','Intl Equity':'badge-intl',
-    'Fixed Income':'badge-fi','Commodity':'badge-commodity','Real Estate':'badge-re','Currency':'badge-currency'
+    'US Equity':    'badge-us',
+    'Sector':       'badge-sector',
+    'Factor':       'badge-factor',
+    'Thematic':     'badge-thematic',
+    'Intl Equity':  'badge-intl',
+    'Fixed Income': 'badge-fi',
+    'Commodity':    'badge-commodity',
+    'Real Estate':  'badge-re',
+    'Currency':     'badge-currency',
+    'Volatility':   'badge-volatility',
   };
   return `<span class="badge ${map[cat]||'badge-sector'}">${cat}</span>`;
 }
+
 function rsBarColor(rs) {
   if (rs == null) return '#333';
   if (rs >= 80) return '#3fb950';
@@ -451,6 +639,14 @@ function corrStyle(v) {
   if (v > -0.7) return 'background:#3a2020;color:#f0883e';
   return 'background:#4a1a1a;color:#f85149';
 }
+function corrClass(v) {
+  if (v == null) return 'corr-neu';
+  if (v >= 0.7)  return 'corr-hi';
+  if (v >= 0.3)  return 'corr-mhi';
+  if (v >= -0.3) return 'corr-neu';
+  if (v >= -0.7) return 'corr-mlo';
+  return 'corr-lo';
+}
 
 // ── Heatmap ───────────────────────────────────────────────────────────────────
 const PERIOD_LABELS = {
@@ -465,7 +661,6 @@ function renderHeatmap(data) {
   const grid = document.getElementById('heatmap-grid');
   if (!data.length) { grid.innerHTML = '<div class="loading">No ETFs match filter.</div>'; return; }
 
-  // Sort heatmap: best first by selected metric
   const sortedData = [...data].sort((a, b) => {
     let av, bv;
     if (heatMetric === 'rsScore') { av = a.rsScore; bv = b.rsScore; }
@@ -497,7 +692,6 @@ function renderHeatmap(data) {
       mainColor = retText(rv);
     }
 
-    // Secondary info row
     const retVal  = e[heatPeriod];
     const flowKey = FLOW_KEYS[heatPeriod];
     const flowVal = e[flowKey];
@@ -526,8 +720,8 @@ function renderHeatmap(data) {
 
 // ── RS Table ──────────────────────────────────────────────────────────────────
 const RS_KEYS = ['symbol','name','category','price','returnYTD','return1m','return3m',
-                 'return6m','return12m','volatility','sharpe','maxDrawdown','rsScore',
-                 'aum','flow1m','flow3m','flowYTD'];
+                 'return6m','return12m','pctFromHigh','volatility','sharpe','maxDrawdown',
+                 'rsScore','aum','flow1m','flow3m','flowYTD'];
 
 function sortTable(key) {
   if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; }
@@ -551,7 +745,6 @@ function renderRS(data) {
     return sortDir * (av - bv);
   });
 
-  // Max abs flow for bar scaling
   const maxFlow = Math.max(...data.map(e => Math.abs(e.flow1m||0)), 1);
 
   document.getElementById('rs-body').innerHTML = sorted.map(e => {
@@ -560,6 +753,10 @@ function renderRS(data) {
     const f1  = e.flow1m, f3 = e.flow3m, fytd = e.flowYTD;
     const fbarW1 = Math.round(Math.abs(f1||0) / maxFlow * 50);
     const fbarC1 = (f1||0) >= 0 ? 'var(--green)' : 'var(--red)';
+    const pfh = e.pctFromHigh;
+    const pfhHtml = pfh != null
+      ? `<span class="${pfh >= 0 ? 'pos' : 'neg'}">${pfh >= 0 ? '+' : ''}${pfh.toFixed(1)}%</span>`
+      : '<span class="neu">—</span>';
 
     return `<tr onclick="openDrill('${e.symbol}')">
       <td><b>${e.symbol}</b></td>
@@ -571,6 +768,7 @@ function renderRS(data) {
       <td>${fmtPct(e.return3m)}</td>
       <td>${fmtPct(e.return6m)}</td>
       <td>${fmtPct(e.return12m)}</td>
+      <td>${pfhHtml}</td>
       <td>${e.volatility!=null?fmt(e.volatility)+'%':'—'}</td>
       <td>${fmt(e.sharpe)}</td>
       <td class="neg">${e.maxDrawdown!=null?fmt(e.maxDrawdown)+'%':'—'}</td>
@@ -594,8 +792,6 @@ function renderRS(data) {
 }
 
 // ── Flows Screen ──────────────────────────────────────────────────────────────
-const FLOW_SORT_KEYS = ['symbol','name','category','aum','flow1m','rsScore'];
-
 function sortFlows(key) {
   if (flowSortKey === key) flowSortDir *= -1; else { flowSortKey = key; flowSortDir = -1; }
   renderFlows(filteredData());
@@ -649,12 +845,21 @@ function openDrill(symbol) {
   const corrRows = ANCHORS.filter(a => a !== symbol && corr[a])
     .map(a => {
       const c30 = corr[a]?.c30;
+      const c90 = corr[a]?.c90;
       return `<div class="metric-row"><span>${a}</span>
-        <span><span class="corr-cell" style="${corrStyle(c30)}">${c30!=null?c30.toFixed(2):'—'}</span></span></div>`;
+        <span>
+          <span class="corr-cell" style="${corrStyle(c30)}" title="30d">${c30!=null?c30.toFixed(2):'—'}</span>
+          ${c90!=null ? `<span class="corr-cell" style="${corrStyle(c90)};margin-left:4px;opacity:.7" title="90d">${c90.toFixed(2)}</span>` : ''}
+        </span></div>`;
     }).join('');
 
   const flowNote = FLOW_NOTE
     ? `<p style="font-size:10px;color:var(--muted);margin-top:8px">${FLOW_NOTE}</p>` : '';
+
+  const pfh = e.pctFromHigh;
+  const pfhHtml = pfh != null
+    ? `<span class="${pfh >= 0 ? 'pos' : 'neg'}">${pfh >= 0 ? '+' : ''}${pfh.toFixed(2)}%</span>`
+    : '—';
 
   document.getElementById('drill-content').innerHTML = `
     <div class="card">
@@ -665,6 +870,9 @@ function openDrill(symbol) {
       <div class="metric-row"><span>3 Month</span><span>${fmtPct(e.return3m)}</span></div>
       <div class="metric-row"><span>6 Month</span><span>${fmtPct(e.return6m)}</span></div>
       <div class="metric-row"><span>12 Month</span><span>${fmtPct(e.return12m)}</span></div>
+      <div class="metric-row"><span>vs 52w High</span><span>${pfhHtml}</span></div>
+      <div class="metric-row"><span>52w High</span><span>${e.high52w!=null?'$'+fmt(e.high52w):'—'}</span></div>
+      <div class="metric-row"><span>52w Low</span><span>${e.low52w!=null?'$'+fmt(e.low52w):'—'}</span></div>
     </div>
     <div class="card">
       <h3>Risk Metrics</h3>
@@ -685,7 +893,7 @@ function openDrill(symbol) {
       ${flowNote}
     </div>
     <div class="card">
-      <h3>30-Day Correlation vs Anchors</h3>
+      <h3>Correlation vs Anchors <span style="font-weight:400;color:var(--muted)">(30d · 90d)</span></h3>
       ${corrRows || '<span class="neu">No correlation data.</span>'}
     </div>`;
 
@@ -710,10 +918,141 @@ function renderIntermarket() {
   </table>`;
 }
 
+// ── Connections (full correlation matrix) ─────────────────────────────────────
+function renderConnections() {
+  const el = document.getElementById('conn-content');
+  const summaryEl = document.getElementById('conn-summary');
+
+  if (!Object.keys(FULL_CORR).length) {
+    el.innerHTML = '<div class="loading" style="color:var(--muted)">Run fetch_data.py to generate correlation matrix.</div>';
+    return;
+  }
+
+  // Build list of symbols present in fullCorr, filtered by activeFilter
+  const allSyms = ALL_DATA.map(e => e.symbol).filter(s => FULL_CORR[s]);
+  const filteredSyms = activeFilter === 'all'
+    ? allSyms
+    : allSyms.filter(s => {
+        const etf = ALL_DATA.find(e => e.symbol === s);
+        return etf && etf.category === activeFilter;
+      });
+
+  if (!filteredSyms.length) {
+    el.innerHTML = '<div class="loading" style="color:var(--muted)">No data for this filter.</div>';
+    return;
+  }
+
+  if (connView === 'leaders') {
+    renderConnectionLeaders(filteredSyms, el, summaryEl);
+  } else {
+    renderConnectionMatrix(filteredSyms, el, summaryEl);
+  }
+}
+
+function renderConnectionMatrix(syms, el, summaryEl) {
+  // Summary stats
+  let countHi = 0, countNeg = 0, totalPairs = 0;
+  syms.forEach((a, i) => {
+    syms.slice(i+1).forEach(b => {
+      const v = FULL_CORR[a]?.[b];
+      if (v != null) {
+        totalPairs++;
+        if (v >= 0.7) countHi++;
+        if (v <= -0.3) countNeg++;
+      }
+    });
+  });
+
+  summaryEl.innerHTML = `
+    <div class="conn-stat"><div class="lbl">ETFs in view</div><div class="val">${syms.length}</div></div>
+    <div class="conn-stat"><div class="lbl">Strong pairs (≥0.7)</div><div class="val" style="color:#3fb950">${countHi}</div></div>
+    <div class="conn-stat"><div class="lbl">Divergent pairs (≤-0.3)</div><div class="val" style="color:#f0883e">${countNeg}</div></div>
+    <div class="conn-stat"><div class="lbl">Total pairs</div><div class="val">${totalPairs}</div></div>
+  `;
+
+  // Matrix header
+  let html = '<div id="conn-matrix-wrap"><table id="conn-matrix"><thead><tr><th>↘</th>';
+  html += syms.map(s => `<th title="${ALL_DATA.find(e=>e.symbol===s)?.name||s}">${s}</th>`).join('');
+  html += '</tr></thead><tbody>';
+
+  syms.forEach(rowSym => {
+    html += `<tr><td onclick="openDrill('${rowSym}')" style="cursor:pointer">${rowSym}</td>`;
+    syms.forEach(colSym => {
+      if (rowSym === colSym) {
+        html += `<td class="corr-self">—</td>`;
+      } else {
+        const v = FULL_CORR[rowSym]?.[colSym];
+        if (v == null) {
+          html += `<td class="corr-neu">—</td>`;
+        } else {
+          const absV = Math.abs(v);
+          // Threshold filter: hide if both below threshold (show diagonal cells always)
+          const show = absV >= connThreshold || v <= -(connThreshold);
+          if (!show && connThreshold > 0) {
+            html += `<td style="color:#2a2a2a;background:#111">·</td>`;
+          } else {
+            html += `<td class="${corrClass(v)}">${v.toFixed(2)}</td>`;
+          }
+        }
+      }
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody></table></div>';
+  el.innerHTML = html;
+}
+
+function renderConnectionLeaders(syms, el, summaryEl) {
+  // For each ETF, find its top positive and top negative correlations within the filtered set
+  const rows = syms.map(sym => {
+    const corrs = syms
+      .filter(s => s !== sym && FULL_CORR[sym]?.[s] != null)
+      .map(s => ({ sym: s, v: FULL_CORR[sym][s] }))
+      .sort((a, b) => b.v - a.v);
+
+    const top3pos = corrs.filter(x => x.v > 0).slice(0, 3);
+    const top3neg = corrs.filter(x => x.v < 0).slice(-3).reverse();
+    const etf = ALL_DATA.find(e => e.symbol === sym);
+
+    return { sym, etf, top3pos, top3neg,
+             avgCorr: corrs.length ? corrs.reduce((a,b)=>a+b.v,0)/corrs.length : null };
+  }).sort((a, b) => (b.avgCorr||0) - (a.avgCorr||0));
+
+  const avgAll = rows.filter(r=>r.avgCorr!=null).reduce((a,b)=>a+b.avgCorr,0) / rows.length;
+  summaryEl.innerHTML = `
+    <div class="conn-stat"><div class="lbl">Most correlated</div><div class="val">${rows[0]?.sym||'—'}</div></div>
+    <div class="conn-stat"><div class="lbl">Least correlated</div><div class="val">${rows[rows.length-1]?.sym||'—'}</div></div>
+    <div class="conn-stat"><div class="lbl">Avg pairwise corr</div><div class="val">${avgAll!=null?avgAll.toFixed(2):'—'}</div></div>
+  `;
+
+  let html = '<div class="table-wrap"><table><thead><tr>'
+    + '<th>Ticker</th><th>Name</th><th>Category</th>'
+    + '<th>Avg Corr</th><th>Top Positive</th><th>Top Negative / Diversifiers</th>'
+    + '</tr></thead><tbody>';
+
+  rows.forEach(r => {
+    const posStr = r.top3pos.map(x=>`<span class="corr-cell" style="${corrStyle(x.v)}">${x.sym} ${x.v.toFixed(2)}</span>`).join(' ');
+    const negStr = r.top3neg.map(x=>`<span class="corr-cell" style="${corrStyle(x.v)}">${x.sym} ${x.v.toFixed(2)}</span>`).join(' ');
+    html += `<tr onclick="openDrill('${r.sym}')">
+      <td><b>${r.sym}</b></td>
+      <td>${r.etf?.name||''}</td>
+      <td>${r.etf?categoryBadge(r.etf.category):''}</td>
+      <td><span style="color:${r.avgCorr>=0?'var(--green)':'var(--red)'};font-weight:700">${r.avgCorr!=null?r.avgCorr.toFixed(2):'—'}</span></td>
+      <td>${posStr||'—'}</td>
+      <td>${negStr||'—'}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  el.innerHTML = html;
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────────
 loadData();
+loadVrmState();
 window.addEventListener('resize', updateStickyOffsets);
 requestAnimationFrame(updateStickyOffsets);
 </script>
 </body>
 </html>
+
