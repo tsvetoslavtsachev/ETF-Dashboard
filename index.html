@@ -178,6 +178,76 @@
   .conn-stat .val { font-size:16px; font-weight:700; color:var(--accent); margin-top:2px; }
   .conn-stat .lbl { color:var(--muted); font-size:10px; }
 
+  /* REGIMES SCREEN */
+  #regime-tabs { display:flex; gap:4px; padding:12px 20px 0; background:var(--surface);
+                 border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .regime-tab-btn { background:none; border:1px solid var(--border); color:var(--muted);
+                    padding:6px 14px; border-radius:6px 6px 0 0; cursor:pointer;
+                    font-size:11px; font-weight:600; transition:all .15s;
+                    border-bottom:none; margin-bottom:-1px; position:relative; }
+  .regime-tab-btn:hover { color:var(--text); border-color:#484f58; }
+  .regime-tab-btn.active { background:var(--bg); color:var(--text); border-color:var(--border); }
+  .regime-tab-btn.current-regime { color:#3fb950; }
+  .regime-tab-btn.current-regime.active { color:#3fb950; }
+  .regime-tab-btn.ks-tab { color:#f0883e; }
+  .regime-tab-btn.ks-tab.active { color:#f0883e; }
+
+  #regime-period-bar { display:flex; gap:4px; padding:10px 20px; background:var(--bg);
+                       border-bottom:1px solid var(--border); align-items:center; flex-wrap:wrap; }
+  #regime-period-bar .label { font-size:11px; color:var(--muted); margin-right:6px; }
+  .rpb { background:none; border:1px solid var(--border); color:var(--muted);
+         padding:3px 10px; border-radius:5px; cursor:pointer; font-size:11px; font-weight:600; transition:all .15s; }
+  .rpb.active, .rpb:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+  .regime-content { padding:16px 20px 30px; }
+  .regime-role-section { margin-bottom:20px; }
+  .regime-role-header { font-size:10px; font-weight:700; letter-spacing:.1em;
+                        text-transform:uppercase; padding:4px 10px; border-radius:4px;
+                        display:inline-block; margin-bottom:10px; }
+  .rr-leader  { background:rgba(63,185,80,.12); color:#3fb950; border:1px solid rgba(63,185,80,.25); }
+  .rr-neutral { background:rgba(139,148,158,.1); color:var(--muted); border:1px solid var(--border); }
+  .rr-laggard { background:rgba(248,81,73,.12); color:#f85149; border:1px solid rgba(248,81,73,.25); }
+
+  .regime-basket-block { margin-bottom:14px; }
+  .regime-basket-label { font-size:10px; color:var(--muted); margin-bottom:6px;
+                         text-transform:uppercase; letter-spacing:.07em; }
+  .regime-basket-label span { font-weight:700; color:var(--text); }
+  .regime-etf-grid { display:flex; flex-wrap:wrap; gap:6px; }
+
+  /* Core ETF card */
+  .retf-card { background:var(--surface); border:1px solid var(--border); border-radius:7px;
+               padding:9px 11px; min-width:120px; max-width:150px; cursor:default;
+               transition:border-color .15s; }
+  .retf-card:hover { border-color:var(--accent); }
+  .retf-card .rc-sym { font-weight:700; font-size:13px; }
+  .retf-card .rc-name { font-size:9px; color:var(--muted); margin-top:1px;
+                        white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:130px; }
+  .retf-card .rc-val { font-size:16px; font-weight:700; margin-top:5px; }
+  .retf-card .rc-rs  { font-size:10px; color:var(--muted); margin-top:2px; }
+  .retf-card .rc-bar { height:3px; border-radius:2px; margin-top:5px; }
+
+  /* Extended ETF card — lighter style */
+  .retf-card.ext { background:rgba(255,255,255,.02); border-color:rgba(255,255,255,.06);
+                   opacity:.85; }
+  .retf-card.ext:hover { opacity:1; border-color:#484f58; }
+
+  .ext-section-divider { display:flex; align-items:center; gap:8px; margin:8px 0 8px;
+                          font-size:10px; color:#484f58; }
+  .ext-section-divider::before, .ext-section-divider::after {
+    content:''; flex:1; height:1px; background:#21262d; }
+
+  /* KS portfolio block */
+  .ks-portfolio-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+                       gap:10px; margin-top:14px; }
+  .ks-alloc-card { background:var(--surface); border:1px solid rgba(240,136,62,.2);
+                   border-radius:8px; padding:12px 14px; }
+  .ks-alloc-card .kac-sym { font-weight:700; font-size:14px; color:#f0883e; }
+  .ks-alloc-card .kac-name { font-size:10px; color:var(--muted); margin-top:2px;
+                              white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ks-alloc-card .kac-pct { font-size:22px; font-weight:800; color:#f0883e; margin-top:6px; }
+  .ks-alloc-card .kac-val { font-size:13px; font-weight:700; margin-top:4px; }
+  .ks-alloc-card .kac-rs  { font-size:10px; color:var(--muted); margin-top:2px; }
+
   /* UTIL */
   .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--muted); }
   .section-title { font-size:11px; color:var(--muted); text-transform:uppercase;
@@ -202,6 +272,7 @@
   <button id="btn-flows"                      onclick="showScreen('flows')">Flows</button>
   <button id="btn-intermarket"                onclick="showScreen('intermarket')">Intermarket</button>
   <button id="btn-connections"                onclick="showScreen('connections')">Connections</button>
+  <button id="btn-regimes"                    onclick="showScreen('regimes')">Regimes</button>
   <span class="spacer"></span>
   <input id="search-box" type="text" placeholder="Search ticker / name…" oninput="applyFilters()"/>
   <span id="last-update"></span>
@@ -339,6 +410,30 @@
   </div>
 </div>
 
+<!-- REGIMES SCREEN -->
+<div id="screen-regimes" class="screen">
+  <div id="regime-tabs">
+    <button class="regime-tab-btn current-regime active" data-regime="GROWTH"     onclick="setRegimeTab('GROWTH',this)">📈 GROWTH</button>
+    <button class="regime-tab-btn"                       data-regime="REFLATION"  onclick="setRegimeTab('REFLATION',this)">🔥 REFLATION</button>
+    <button class="regime-tab-btn"                       data-regime="STAGNATION" onclick="setRegimeTab('STAGNATION',this)">🔄 STAGNATION</button>
+    <button class="regime-tab-btn"                       data-regime="CRISIS"     onclick="setRegimeTab('CRISIS',this)">⚠️ CRISIS</button>
+    <button class="regime-tab-btn"                       data-regime="DEFLATION"  onclick="setRegimeTab('DEFLATION',this)">❄️ DEFLATION</button>
+    <button class="regime-tab-btn ks-tab"                data-regime="KS-A"       onclick="setRegimeTab('KS-A',this)">🛡 KS Вар.A</button>
+    <button class="regime-tab-btn ks-tab"                data-regime="KS-B"       onclick="setRegimeTab('KS-B',this)">🛡 KS Вар.B</button>
+  </div>
+  <div id="regime-period-bar">
+    <span class="label">Период:</span>
+    <button class="rpb active" data-rperiod="rsScore"   onclick="setRegimePeriod('rsScore',this)">RS</button>
+    <button class="rpb"        data-rperiod="return1m"  onclick="setRegimePeriod('return1m',this)">1M</button>
+    <button class="rpb"        data-rperiod="return3m"  onclick="setRegimePeriod('return3m',this)">3M</button>
+    <button class="rpb"        data-rperiod="return6m"  onclick="setRegimePeriod('return6m',this)">6M</button>
+    <button class="rpb"        data-rperiod="return12m" onclick="setRegimePeriod('return12m',this)">12M</button>
+  </div>
+  <div id="regime-content" class="regime-content">
+    <div class="loading"><span class="spinner"></span>Loading…</div>
+  </div>
+</div>
+
 <!-- CONNECTIONS SCREEN -->
 <div id="screen-connections" class="screen">
   <div style="padding:20px 20px 0">
@@ -385,6 +480,8 @@ let previousScreen   = 'heatmap';
 let connWindow       = 60;    // 60 or 30 (days)
 let connThreshold    = 0.5;
 let connView         = 'matrix';
+let regimeTab        = 'GROWTH';
+let regimePeriod     = 'rsScore';
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 async function loadData() {
@@ -413,6 +510,8 @@ async function loadData() {
     renderFlows(filteredData());
     renderConnections();
     requestAnimationFrame(updateStickyOffsets);
+    // If regimes screen is already visible (unlikely but safe)
+    if (document.getElementById('screen-regimes').classList.contains('active')) renderRegimes();
   } catch(e) {
     document.getElementById('heatmap-grid').innerHTML =
       '<div class="loading" style="color:var(--red)">⚠ Could not load data/etfs.json.<br>Run fetch_data.py to generate it.</div>';
@@ -426,6 +525,24 @@ async function loadVrmState() {
     if (!resp.ok) return;
     VRM_STATE = await resp.json();
     renderVrmBanner();
+    // Set default regime tab to current active regime and highlight it
+    if (VRM_STATE.regime) {
+      regimeTab = VRM_STATE.regime;
+      document.querySelectorAll('.regime-tab-btn').forEach(b => {
+        b.classList.remove('active', 'current-regime');
+        if (b.dataset.regime === VRM_STATE.regime) {
+          b.classList.add('current-regime');
+          // Only set active if none is already active
+          if (!document.querySelector('.regime-tab-btn.active')) b.classList.add('active');
+        }
+      });
+      // Ensure the current-regime tab is also the initially selected one
+      const curBtn = document.querySelector(`.regime-tab-btn[data-regime="${VRM_STATE.regime}"]`);
+      if (curBtn) {
+        document.querySelectorAll('.regime-tab-btn').forEach(b => b.classList.remove('active'));
+        curBtn.classList.add('active');
+      }
+    }
   } catch(e) { /* vrm_state.json optional */ }
 }
 
@@ -515,6 +632,7 @@ function showScreen(name) {
   const btn = document.getElementById('btn-' + name);
   if (btn) btn.classList.add('active');
   if (name !== 'drill') previousScreen = name;
+  if (name === 'regimes') renderRegimes();
 }
 function goBack() { showScreen(previousScreen); }
 
@@ -1059,6 +1177,228 @@ function renderConnectionLeaders(syms, el, summaryEl, FULL_CORR) {
     </tr>`;
   });
   html += '</tbody></table></div>';
+  el.innerHTML = html;
+}
+
+// ── Regimes ───────────────────────────────────────────────────────────────────
+function setRegimeTab(tab, btn) {
+  regimeTab = tab;
+  document.querySelectorAll('.regime-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRegimes();
+}
+function setRegimePeriod(p, btn) {
+  regimePeriod = p;
+  document.querySelectorAll('.rpb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRegimes();
+}
+
+function getRegimePeriodLabel() {
+  const MAP = { rsScore:'RS Score', return1m:'1M Return', return3m:'3M Return',
+                return6m:'6M Return', return12m:'12M Return' };
+  return MAP[regimePeriod] || regimePeriod;
+}
+
+function fmtRegimeVal(etf) {
+  if (regimePeriod === 'rsScore') {
+    const v = etf.rsScore;
+    return v != null ? `<span class="${v>=60?'pos':v<=40?'neg':'neu'}">${Math.round(v)}</span>` : '—';
+  }
+  const v = etf[regimePeriod];
+  if (v == null) return '—';
+  const pct = (v * 100).toFixed(1);
+  return `<span class="${v>0?'pos':v<0?'neg':'neu'}">${v>0?'+':''}${pct}%</span>`;
+}
+
+function getRegimeValNum(etf) {
+  if (regimePeriod === 'rsScore') return etf.rsScore || 0;
+  return etf[regimePeriod] || 0;
+}
+
+function rsBarColor(rs) {
+  if (rs >= 70) return '#3fb950';
+  if (rs >= 50) return '#56d364';
+  if (rs >= 30) return '#d29922';
+  return '#f85149';
+}
+function retBarColor(v) {
+  return v >= 0 ? '#3fb950' : '#f85149';
+}
+
+function makeEtfCard(etf, isExt) {
+  if (!etf) return '';
+  const extCls = isExt ? ' ext' : '';
+  const displayVal = fmtRegimeVal(etf);
+  // mini bar
+  let barColor, barWidth;
+  if (regimePeriod === 'rsScore') {
+    barColor = rsBarColor(etf.rsScore || 0);
+    barWidth = Math.max(4, Math.round((etf.rsScore || 0) * 1.3));
+  } else {
+    const v = etf[regimePeriod] || 0;
+    barColor = retBarColor(v);
+    barWidth = Math.min(100, Math.max(4, Math.round(Math.abs(v) * 300)));
+  }
+  const rs = etf.rsScore != null ? etf.rsScore.toFixed(0) : '—';
+  return `<div class="retf-card${extCls}" title="${etf.name||etf.symbol}">
+  <div class="rc-sym">${etf.symbol}</div>
+  <div class="rc-name">${etf.name||''}</div>
+  <div class="rc-val">${displayVal}</div>
+  <div class="rc-rs">RS ${rs}</div>
+  <div class="rc-bar" style="background:${barColor};width:${barWidth}px;max-width:100%"></div>
+</div>`;
+}
+
+function renderRegimes() {
+  if (!VRM_STATE || ALL_DATA.length === 0) {
+    document.getElementById('regime-content').innerHTML =
+      '<div class="loading" style="color:var(--muted)">Waiting for data…</div>';
+    return;
+  }
+
+  const baskets = VRM_STATE.basketDefinitions || {};
+  const etfMap  = {};
+  ALL_DATA.forEach(e => { etfMap[e.symbol] = e; });
+
+  const el = document.getElementById('regime-content');
+
+  // ── KS Tabs ──────────────────────────────────────────────────────────────
+  if (regimeTab === 'KS-A' || regimeTab === 'KS-B') {
+    const ks = VRM_STATE.killSwitch || {};
+    const portfolio = regimeTab === 'KS-A'
+      ? (ks.portfolio || {})
+      : (ks.variantB && ks.variantB.portfolio ? ks.variantB.portfolio : {});
+    const varLabel = regimeTab === 'KS-A'
+      ? (ks.variantLabel || 'Standard (TLT/GLD/IEF)')
+      : (ks.variantB && ks.variantB.label ? ks.variantB.label : 'Stagflation (GLD/TIP/DBC/IEF)');
+
+    const isActive = ks.active && ks.variant === (regimeTab === 'KS-A' ? 'A' : 'B');
+    const activeBadge = isActive
+      ? `<span style="background:rgba(240,136,62,.15);color:#f0883e;border:1px solid rgba(240,136,62,.3);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-left:10px;">● АКТИВЕН</span>`
+      : '';
+
+    let html = `<div style="margin-bottom:14px;">
+      <p style="font-size:13px;font-weight:600;color:#f0883e;margin-bottom:4px;">${regimeTab} — ${varLabel}${activeBadge}</p>
+      <p class="note-box" style="margin-top:8px;">Kill Switch портфейл — активира се при пазарен спад над -8%. Показани са текущите данни за всеки актив в кошницата.</p>
+    </div>`;
+
+    html += '<div class="ks-portfolio-grid">';
+    Object.entries(portfolio).forEach(([sym, wt]) => {
+      const etf = etfMap[sym] || { symbol: sym, name: sym };
+      const pct = (wt * 100).toFixed(0) + '%';
+      const displayVal = fmtRegimeVal(etf);
+      const rs = etf.rsScore != null ? etf.rsScore.toFixed(0) : '—';
+      html += `<div class="ks-alloc-card">
+        <div class="kac-sym">${sym}</div>
+        <div class="kac-name">${etf.name||sym}</div>
+        <div class="kac-pct">${pct}</div>
+        <div class="kac-val">${displayVal}</div>
+        <div class="kac-rs">RS ${rs}</div>
+      </div>`;
+    });
+    html += '</div>';
+
+    // extended universe for KS-A: fixed income + commodity + currency
+    const extCats = regimeTab === 'KS-A'
+      ? ['Fixed Income', 'Commodity', 'Currency']
+      : ['Fixed Income', 'Commodity', 'Real Estate'];
+    const ksSyms = new Set(Object.keys(portfolio));
+    const extEtfs = ALL_DATA.filter(e => extCats.includes(e.category) && !ksSyms.has(e.symbol))
+      .sort((a,b) => getRegimeValNum(b) - getRegimeValNum(a));
+    if (extEtfs.length) {
+      html += `<div class="ext-section-divider">Разширена вселена — ${extCats.join(' · ')}</div>`;
+      html += '<div class="regime-etf-grid">';
+      extEtfs.forEach(e => { html += makeEtfCard(e, true); });
+      html += '</div>';
+    }
+
+    el.innerHTML = html;
+    return;
+  }
+
+  // ── Regime tabs (GROWTH / REFLATION / STAGNATION / CRISIS / DEFLATION) ──
+  // Score thresholds: > 0 → leader, 0 → neutral, < 0 → laggard
+  const REGIME_LABELS = {
+    GROWTH:'📈 GROWTH — Икономически растеж',
+    REFLATION:'🔥 REFLATION — Инфлационно ускорение',
+    STAGNATION:'🔄 STAGNATION — Забавяне',
+    CRISIS:'⚠️ CRISIS — Пазарен стрес',
+    DEFLATION:'❄️ DEFLATION — Дефлационен натиск'
+  };
+
+  const leaders  = [];
+  const neutrals = [];
+  const laggards = [];
+
+  Object.entries(baskets).forEach(([key, basket]) => {
+    const score = basket.regimeMatrix && basket.regimeMatrix[regimeTab] != null
+      ? basket.regimeMatrix[regimeTab] : null;
+    if (score === null) return;
+    const entry = { key, basket, score };
+    if (score > 0)      leaders.push(entry);
+    else if (score < 0) laggards.push(entry);
+    else                neutrals.push(entry);
+  });
+  leaders.sort((a,b)  => b.score - a.score);
+  laggards.sort((a,b) => a.score - b.score);
+
+  const isCurrentRegime = VRM_STATE.regime === regimeTab;
+  const currentBadge = isCurrentRegime
+    ? `<span style="background:rgba(63,185,80,.12);color:#3fb950;border:1px solid rgba(63,185,80,.25);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-left:10px;">● АКТИВЕН РЕЖИМ</span>`
+    : '';
+
+  let html = `<div style="margin-bottom:12px;">
+    <p style="font-size:13px;font-weight:600;color:var(--text);">${REGIME_LABELS[regimeTab]||regimeTab}${currentBadge}</p>
+  </div>`;
+
+  function renderSection(entries, roleLabel, roleCls) {
+    if (!entries.length) return '';
+    let s = `<div class="regime-role-section">
+      <span class="regime-role-header ${roleCls}">${roleLabel}</span>`;
+
+    entries.forEach(({ key, basket, score }) => {
+      const scoreStr = score > 0 ? `+${score}` : `${score}`;
+      // Core ETFs
+      const coreSyms = new Set(basket.etfs || []);
+      const coreEtfs = (basket.etfs || []).map(sym => etfMap[sym]).filter(Boolean)
+        .sort((a,b) => getRegimeValNum(b) - getRegimeValNum(a));
+
+      // Extended ETFs: same categories, NOT in core
+      const extCats  = basket.extendedCategories || [];
+      const extEtfs  = ALL_DATA
+        .filter(e => extCats.includes(e.category) && !coreSyms.has(e.symbol))
+        .sort((a,b) => getRegimeValNum(b) - getRegimeValNum(a));
+
+      s += `<div class="regime-basket-block">
+        <div class="regime-basket-label">
+          <span>${basket.label || key}</span>
+          <span style="color:${score>0?'var(--green)':'var(--red)'};font-size:9px;margin-left:5px;">(score ${scoreStr})</span>
+        </div>`;
+
+      if (coreEtfs.length) {
+        s += '<div class="regime-etf-grid">';
+        coreEtfs.forEach(e => { s += makeEtfCard(e, false); });
+        s += '</div>';
+      }
+
+      if (extEtfs.length) {
+        s += `<div class="ext-section-divider">Подобни — ${extCats.join(' / ')}</div>`;
+        s += '<div class="regime-etf-grid">';
+        extEtfs.forEach(e => { s += makeEtfCard(e, true); });
+        s += '</div>';
+      }
+
+      s += '</div>'; // basket-block
+    });
+    s += '</div>'; // role-section
+    return s;
+  }
+
+  html += renderSection(leaders,  `▲ LEADERS — очаквани лидери при ${regimeTab}`,  'rr-leader');
+  html += renderSection(neutrals, `◉ NEUTRAL — неутрална роля при ${regimeTab}`, 'rr-neutral');
+  html += renderSection(laggards, `▼ LAGGARDS — очаквано изоставащи при ${regimeTab}`, 'rr-laggard');
+
   el.innerHTML = html;
 }
 
