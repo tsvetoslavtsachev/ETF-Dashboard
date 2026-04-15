@@ -13,6 +13,15 @@
       "GLD": 0.30,
       "IEF": 0.10
     },
+    "variantB": {
+      "label": "Stagflation Protection (GLD/TIP/DBC/IEF)",
+      "portfolio": {
+        "GLD": 0.35,
+        "TIP": 0.30,
+        "DBC": 0.20,
+        "IEF": 0.15
+      }
+    },
     "notes": "Switched from Variant B (inflation) to Variant A (duration) on 2026-04-14"
   },
   "alignment": {
@@ -28,5 +37,127 @@
   "watchlist": ["TLT", "GLD", "UUP", "TIP"],
   "topLeaders": ["GLD", "IAU", "TLT"],
   "topLaggards": ["XLK", "QQQ", "ARKK"],
-  "narrativeLine": "Режимът е GROWTH, но Kill Switch е активен. Портфейлите са в защитен режим Вар.А (облигации + злато). Мониторинг до деактивиране."
+  "narrativeLine": "Режимът е GROWTH, но Kill Switch е активен. Портфейлите са в защитен режим Вар.А (облигации + злато). Мониторинг до деактивиране.",
+
+  "_basketNote": "MID basket definitions. regimeMatrix scores: 1=strong leader, 0.5=leader, 0=neutral, -0.5=laggard, -1=strong laggard. extendedCategories maps to ETF dashboard category names.",
+  "basketDefinitions": {
+    "RISK_ON_GROWTH": {
+      "label": "Растеж (Risk-On)",
+      "labelEN": "Risk-On Growth",
+      "etfs": ["SPY", "QQQ"],
+      "extendedCategories": ["US Equity", "Factor"],
+      "regimeMatrix": {
+        "GROWTH":     1.0,
+        "REFLATION":  0.5,
+        "STAGNATION": 0.0,
+        "CRISIS":    -1.0,
+        "DEFLATION": -0.5
+      }
+    },
+    "RISK_ON_CYCLICAL": {
+      "label": "Циклични (Risk-On)",
+      "labelEN": "Risk-On Cyclical",
+      "etfs": ["IWM", "XLF", "XLY", "XLI"],
+      "extendedCategories": ["Sector"],
+      "regimeMatrix": {
+        "GROWTH":     0.5,
+        "REFLATION":  1.0,
+        "STAGNATION":-1.0,
+        "CRISIS":    -1.0,
+        "DEFLATION": -1.0
+      }
+    },
+    "COMMODITY_INFLATION": {
+      "label": "Суровини / Инфлация",
+      "labelEN": "Commodity & Inflation",
+      "etfs": ["XLE", "XLB", "GLD", "SLV", "DBC"],
+      "extendedCategories": ["Commodity"],
+      "regimeMatrix": {
+        "GROWTH":    -1.0,
+        "REFLATION":  1.0,
+        "STAGNATION":-0.5,
+        "CRISIS":     0.5,
+        "DEFLATION": -1.0
+      }
+    },
+    "INFLATION_PROTECTION": {
+      "label": "Защита от инфлация",
+      "labelEN": "Inflation Protection",
+      "etfs": ["TIP", "GLD"],
+      "extendedCategories": ["Fixed Income"],
+      "regimeMatrix": {
+        "GROWTH":    -0.5,
+        "REFLATION":  0.5,
+        "STAGNATION": 0.0,
+        "CRISIS":     1.0,
+        "DEFLATION":  0.5
+      }
+    },
+    "DEFENSIVE_EQUITY": {
+      "label": "Защитни акции",
+      "labelEN": "Defensive Equity",
+      "etfs": ["XLV", "XLP", "XLU"],
+      "extendedCategories": ["Sector"],
+      "regimeMatrix": {
+        "GROWTH":    -1.0,
+        "REFLATION": -1.0,
+        "STAGNATION": 1.0,
+        "CRISIS":     0.5,
+        "DEFLATION":  0.5
+      }
+    },
+    "DURATION": {
+      "label": "Дюрация (Облигации)",
+      "labelEN": "Duration",
+      "etfs": ["TLT", "IEF"],
+      "extendedCategories": ["Fixed Income"],
+      "regimeMatrix": {
+        "GROWTH":     0.5,
+        "REFLATION": -1.0,
+        "STAGNATION": 1.0,
+        "CRISIS":    -0.5,
+        "DEFLATION":  1.0
+      }
+    },
+    "CREDIT": {
+      "label": "Кредитен риск",
+      "labelEN": "Credit",
+      "etfs": ["LQD", "HYG"],
+      "extendedCategories": ["Fixed Income"],
+      "regimeMatrix": {
+        "GROWTH":     0.5,
+        "REFLATION":  0.0,
+        "STAGNATION": 0.5,
+        "CRISIS":    -0.5,
+        "DEFLATION": -0.5
+      }
+    },
+    "REAL_ESTATE": {
+      "label": "Недвижими имоти",
+      "labelEN": "Real Estate",
+      "etfs": ["VNQ"],
+      "extendedCategories": ["Real Estate"],
+      "regimeMatrix": {
+        "GROWTH":     0.5,
+        "REFLATION":  0.0,
+        "STAGNATION": 0.5,
+        "CRISIS":    -1.0,
+        "DEFLATION": -0.5
+      }
+    },
+    "INTERNATIONAL": {
+      "label": "Международни пазари",
+      "labelEN": "International",
+      "etfs": ["EFA", "EEM", "FXI"],
+      "extendedCategories": ["Intl Equity"],
+      "regimeMatrix": {
+        "GROWTH":     0.5,
+        "REFLATION":  0.5,
+        "STAGNATION":-0.5,
+        "CRISIS":    -1.0,
+        "DEFLATION": -0.5
+      },
+      "_note": "Tracking basket — outside main divergence engine"
+    }
+  }
 }
