@@ -612,7 +612,8 @@ function applyFilters() {
   renderHeatmap(data);
   renderRS(data);
   renderFlows(data);
-  renderConnections();   // Connections always re-renders — it reads activeFilter internally
+  renderIntermarket();   // respects filteredData() internally
+  renderConnections();   // respects activeFilter internally
 }
 
 // ── Sticky header height tracker ─────────────────────────────────────────────
@@ -1031,7 +1032,8 @@ function openDrill(symbol) {
 function renderIntermarket() {
   const wrap = document.getElementById('corr-table-wrap');
   if (!ALL_DATA.length) return;
-  const rows = ALL_DATA.map(e => {
+  const data = filteredData();   // respects active category filter
+  const rows = data.map(e => {
     const corr  = CORR_DATA[e.symbol] || {};
     const cells = ANCHORS.filter(a => a !== e.symbol).map(a => {
       const c = corr[a]?.c30;
@@ -1207,8 +1209,8 @@ function fmtRegimeVal(etf) {
   }
   const v = etf[regimePeriod];
   if (v == null) return '—';
-  const pct = (v * 100).toFixed(1);
-  return `<span class="${v>0?'pos':v<0?'neg':'neu'}">${v>0?'+':''}${pct}%</span>`;
+  // Values are already in % form (e.g. 5.2 = 5.2%) — same convention as fmtPct()
+  return `<span class="${v>0?'pos':v<0?'neg':'neu'}">${v>0?'+':''}${(+v).toFixed(1)}%</span>`;
 }
 
 function getRegimeValNum(etf) {
@@ -1238,7 +1240,8 @@ function makeEtfCard(etf, isExt) {
   } else {
     const v = etf[regimePeriod] || 0;
     barColor = retBarColor(v);
-    barWidth = Math.min(100, Math.max(4, Math.round(Math.abs(v) * 300)));
+    // v is already in % form (e.g. 5.2 = 5.2%), so multiply by 3 for pixel width
+    barWidth = Math.min(100, Math.max(4, Math.round(Math.abs(v) * 3)));
   }
   const rs = etf.rsScore != null ? etf.rsScore.toFixed(0) : '—';
   return `<div class="retf-card${extCls}" title="${etf.name||etf.symbol}">
