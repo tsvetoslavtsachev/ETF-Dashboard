@@ -369,20 +369,29 @@ def compute_full_correlation_matrix(price_data: dict, window: int = 60) -> dict:
 
 # ── Category RS Rankings ──────────────────────────────────────────────────────
 def compute_category_summary(etf_list: list) -> list:
-    """Aggregate RS score by category — useful for the summary banner."""
+    """Aggregate RS score and returns by category — used for regime extended universe grouping."""
     from collections import defaultdict
-    cat_scores = defaultdict(list)
+    cat_items = defaultdict(list)
     for etf in etf_list:
-        if etf.get("rsScore") is not None:
-            cat_scores[etf["category"]].append(etf["rsScore"])
+        cat_items[etf["category"]].append(etf)
+
+    def avg(items, key):
+        vals = [x.get(key) for x in items if x.get(key) is not None]
+        return round(sum(vals) / len(vals), 2) if vals else None
+
     summary = []
-    for cat, scores in cat_scores.items():
+    for cat, items in cat_items.items():
         summary.append({
-            "category": cat,
-            "avgRS": round(sum(scores) / len(scores), 1),
-            "count": len(scores),
+            "category":  cat,
+            "count":     len(items),
+            "avgRS":     avg(items, "rsScore"),
+            "return1m":  avg(items, "return1m"),
+            "return3m":  avg(items, "return3m"),
+            "return6m":  avg(items, "return6m"),
+            "return12m": avg(items, "return12m"),
+            "returnYTD": avg(items, "returnYTD"),
         })
-    summary.sort(key=lambda x: x["avgRS"], reverse=True)
+    summary.sort(key=lambda x: (x["avgRS"] or 0), reverse=True)
     return summary
 
 
@@ -486,3 +495,4 @@ if __name__ == "__main__":
         json.dump(data, f, indent=2)
     print(f"\nDone — {len(data['etfs'])} ETFs written to {out_path}")
     print(f"Updated: {data['updatedAt']}")
+
