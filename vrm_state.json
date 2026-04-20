@@ -1,7 +1,7 @@
 {
   "_note": "Update this file weekly after running the VRM model. Commit to GitHub to update the public dashboard.",
-  "updatedAt": "2026-04-14",
-  "regime": "GROWTH",
+  "updatedAt": "2026-04-18",
+  "regime": "REFLATION",
   "regimeStrength": "moderate",
   "killSwitch": {
     "active": true,
