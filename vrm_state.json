@@ -1,32 +1,55 @@
 {
   "_note": "Update this file weekly after running the VRM model. Commit to GitHub to update the public dashboard.",
-  "updatedAt": "2026-04-18",
+  "updatedAt": "2026-04-20",
   "regime": "REFLATION",
-  "regimeStrength": "moderate",
+  "regimeStrength": "strong",
   "killSwitch": {
     "active": true,
     "activatedAt": "2026-03-28",
     "variant": "A",
     "variantLabel": "Standard Protection (TLT/GLD/IEF)",
     "portfolio": {
-      "TLT": 0.60,
-      "GLD": 0.30,
-      "IEF": 0.10
+      "TLT": 0.6,
+      "GLD": 0.3,
+      "IEF": 0.1
     },
-    "notes": "Switched from Variant B (inflation) to Variant A (duration) on 2026-04-14"
+    "notes": "Switched from Variant B to Variant A on 2026-04-14"
   },
   "alignment": {
-    "score": 4,
+    "score": 6,
     "outOf": 8,
-    "label": "Умерен консенсус"
+    "label": "УМЕРЕН-ЧИСТ"
   },
   "regimeHistory": [
-    {"date": "2025-10-01", "regime": "REFLATION"},
-    {"date": "2025-12-15", "regime": "GROWTH"},
-    {"date": "2026-03-28", "regime": "GROWTH", "ksActivated": true}
+    {
+      "date": "2026-03-14",
+      "regime": "GROWTH"
+    },
+    {
+      "date": "2026-03-28",
+      "regime": "GROWTH",
+      "ksActivated": true
+    },
+    {
+      "date": "2026-04-18",
+      "regime": "REFLATION"
+    }
   ],
-  "watchlist": ["TLT", "GLD", "UUP", "TIP"],
-  "topLeaders": ["GLD", "IAU", "TLT"],
-  "topLaggards": ["XLK", "QQQ", "ARKK"],
-  "narrativeLine": "Режимът е GROWTH, но Kill Switch е активен. Портфейлите са в защитен режим Вар.А (облигации + злато). Мониторинг до деактивиране."
+  "watchlist": [
+    "TLT",
+    "GLD",
+    "UUP",
+    "TIP"
+  ],
+  "topLeaders": [
+    "EWY",
+    "SOXX",
+    "DFEN"
+  ],
+  "topLaggards": [
+    "INDA",
+    "FXY",
+    "VIXY"
+  ],
+  "narrativeLine": "Режимът е REFLATION, но Kill Switch е активен. Портфейлите са в защитен режим Вар.A. Мониторинг до деактивиране."
 }
