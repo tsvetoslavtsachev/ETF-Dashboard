@@ -1,10 +1,9 @@
 name: Daily ETF Data Update
 
 on:
-  schedule:
-    # Runs every weekday at 22:00 UTC (00:00 EET / Sofia time)
-    - cron: '0 22 * * 1-5'
-  workflow_dispatch:  # Allow manual trigger from GitHub UI
+  # S17 retire (2026-06-22): scheduled auto-update removed — repo archived.
+  # Successor: ETF-rotationradar (https://github.com/tsvetoslavtsachev/ETF-rotationradar).
+  workflow_dispatch:  # Manual trigger only (no-op while archived)
 
 permissions:
   contents: write

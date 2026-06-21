@@ -1,8 +1,23 @@
+> ## ⚠️ DEPRECATED / ARCHIVED (2026-06-22)
+>
+> This dashboard is **retired**. Its momentum, relative-strength, screener and intermarket
+> analysis live on — broader and daily-updated — in the successor:
+>
+> ### → [**ETF Rotation Radar**](https://github.com/tsvetoslavtsachev/ETF-rotationradar) · [live site](https://tsvetoslavtsachev.github.io/ETF-rotationradar/)
+>
+> The successor tracks **131 ETFs** (vs 40 here) across 9 categories — category-relative
+> momentum, rotation quadrants, a Pristine RS Line, a behavioral barometer, and a **weekly
+> intermarket-correlation lens** (26/52-week vs 10 anchors). Data now flows through the
+> `macro-satellite` collector (yfinance), so this repo no longer auto-updates. Kept
+> read-only for history.
+
+---
+
 # ETF Dashboard
 
 Sortable ETF dashboard with heatmap, relative strength table, exposure drill-down and intermarket correlation panel.
 
-**Live site:** https://tsvetoslavtsachev.github.io/ETF-Dashboard/
+**Live site:** https://tsvetoslavtsachev.github.io/ETF-Dashboard/ _(retired — see successor above)_
 
 ## Structure
 
